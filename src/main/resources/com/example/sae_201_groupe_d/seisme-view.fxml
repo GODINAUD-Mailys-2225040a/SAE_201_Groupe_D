@@ -37,7 +37,23 @@
             <HBox>
                 <MenuBar>
                     <Menu text="Pays">
-
+                        <MenuItem text="Allemagne"/>
+                        <MenuItem text="Autriche"/>
+                        <MenuItem text="Belgique"/>
+                        <MenuItem text="Espagne"/>
+                        <MenuItem text="France"/>
+                        <MenuItem text="Grade-Bretagne"/>
+                        <MenuItem text="Italie"/>
+                        <MenuItem text="Luxembourg"/>
+                        <MenuItem text="Pays-Bas"/>
+                        <MenuItem text="Portugal"/>
+                        <MenuItem text="Suisse"/>
+                        <MenuItem text="Non renseigné"/>
+                    </Menu>
+                </MenuBar>
+                <MenuBar>
+                    <Menu text="Région">
+                        <MenuItem text=""
                     </Menu>
                 </MenuBar>
             </HBox>
