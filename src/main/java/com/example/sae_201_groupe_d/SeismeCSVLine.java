@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class SeismeCSVLine
+public class SeismeCSVLine //Challah ça marche, à tester
 {
     private String csvName;
 
