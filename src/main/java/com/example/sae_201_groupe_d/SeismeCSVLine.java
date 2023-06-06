@@ -4,6 +4,8 @@ import com.gluonhq.maps.MapView;
 import javafx.fxml.FXML;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.lang.reflect.Executable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -33,9 +35,8 @@ public class SeismeCSVLine //Challah ça marche, à tester
     {
         //Constructeur complet
         super();
-        this.csvName = csvName;
-
         init(csvName);
+        this.csvName = csvName;
     }
     public SeismeCSVLine()
     {
@@ -45,11 +46,12 @@ public class SeismeCSVLine //Challah ça marche, à tester
 
     private void init(String csvName)
     {
-        try (Scanner scanner = new Scanner(csvName)) {
-            while (scanner.hasNextLine()) {
-                usableList.add(getRecordFromLine(scanner.nextLine()));
+        try (FileInputStream file = new FileInputStream("/Users/olivierrossi/IdeaProjects/SAE_201_Groupe_D/src/main/resources/com/example/sae_201_groupe_d/SisFrance_seismes_20230605145730.csv")) {
+            System.out.println("file ok");
+            while (file.()) {
+                usableList.add(getRecordFromLine(file.nextLine()));
             }
-        }
+        } catch (Exception failed) {System.out.println("file failed");}
     }
 
     private SeismeCSVLine getRecordFromLine(String line) {
@@ -66,9 +68,14 @@ public class SeismeCSVLine //Challah ça marche, à tester
         try (Scanner rowScanner = new Scanner(line)) {
             rowScanner.useDelimiter(",");
             while (rowScanner.hasNext()) {
+                ++cpt;
                 if (rowScanner.toString() == "")
                     privateFields.set(cpt, null);
-                else
+                else {
+                    System.out.println(rowScanner.next());
+                    System.out.println(rowScanner.next());
+                    System.out.println(rowScanner.next());
+                    System.out.println(rowScanner.next());
                     switch (cpt)
                     {
                         case (1):
@@ -108,8 +115,9 @@ public class SeismeCSVLine //Challah ça marche, à tester
                             values.setQualIntEpicentrale(rowScanner.toString());
                             break;
                         default:
-                            System.out.println("bruh");
+                            System.out.println("fail " + cpt);
                     }
+                }
             }
         }
         return values;
