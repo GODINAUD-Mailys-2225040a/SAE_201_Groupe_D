@@ -1,5 +1,8 @@
 package com.example.sae_201_groupe_d;
 
+import com.gluonhq.maps.MapView;
+import javafx.fxml.FXML;
+
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -8,6 +11,8 @@ import java.util.Scanner;
 public class SeismeCSVLine //Challah ça marche, à tester
 {
     private String csvName;
+    @FXML
+    private MapView mapView;
 
     private Integer id;
     private String date;
