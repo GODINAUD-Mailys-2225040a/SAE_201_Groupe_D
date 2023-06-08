@@ -11,4 +11,5 @@ Réalisation d'un premier dashboard
 Création du github et début de la programmation
 
 ## Jour 2 
-![dashboard2](https://github.com/MailysGodinaudG21207635/SAE_201_Groupe_D/blob/master/src/main/resources/com/example/sae_201_groupe_d/.png)
+![dashboard2](https://github.com/MailysGodinaudG21207635/SAE_201_Groupe_D/blob/master/src/main/resources/com/example/sae_201_groupe_d/Capture_decran_2023-06-07_a_10.00.06.png
+)
