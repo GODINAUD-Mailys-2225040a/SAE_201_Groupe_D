@@ -119,7 +119,7 @@ public class SeismeController {
     @FXML
     protected void initialize(){
         dep.setItems(options);
-        mapView.setZoom(6);
+        mapView.setZoom(5.5);
         mapView.setCenter(46.603354, 1.888334);
     }
 
