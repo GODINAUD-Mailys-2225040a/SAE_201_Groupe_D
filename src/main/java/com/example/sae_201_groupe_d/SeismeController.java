@@ -7,15 +7,19 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import com.gluonhq.maps.MapView;
 
+
 public class SeismeController {
     @FXML
     private Label welcomeText;
 
     @FXML
+    private MapView mapView;
+
+    @FXML
     private ComboBox<String> dep;
 
     ObservableList<String> options = FXCollections.observableArrayList(
-            "Ain",
+                    "Ain",
                     "Aisne",
                     "Allier",
                     "Alpes-de-Haute-Provence",
@@ -112,6 +116,14 @@ public class SeismeController {
                     "Val-de-Marne",
                     "Val-d'Oise"
     );
+
+
+    @FXML
+    protected void debut(){
+        dep.setItems(options);
+        mapView.setZoom(6);
+        mapView.setCenter(46.603354, 1.888334);
+    }
 
     @FXML
     protected void onHelloButtonClick() {
