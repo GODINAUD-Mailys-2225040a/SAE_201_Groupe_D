@@ -9,8 +9,6 @@ import com.gluonhq.maps.MapView;
 
 
 public class SeismeController {
-    @FXML
-    private Label welcomeText;
 
     @FXML
     private MapView mapView;
@@ -119,14 +117,15 @@ public class SeismeController {
 
 
     @FXML
-    protected void debut(){
+    protected void initialize(){
         dep.setItems(options);
         mapView.setZoom(6);
         mapView.setCenter(46.603354, 1.888334);
     }
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    protected void recherche(){
+
     }
+
 }

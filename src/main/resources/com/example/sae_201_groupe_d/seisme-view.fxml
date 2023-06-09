@@ -19,14 +19,14 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.sae_201_groupe_d.SeismeController" >
     <top>
-        <HBox style="-fx-background-color: #abe7ab;" alignment="CENTER" >
-            <Label text="Séismes en France depuis 1000 ans" style="-fx-font-size: 26px; " alignment="CENTER"/>
+        <HBox style="-fx-background-color: #0f70ff;" alignment="CENTER" >
+            <Label text="Séismes depuis 1000 ans" style="-fx-font-size: 26px; -fx-font-family: Amiri; -fx-fill: white; " alignment="CENTER"/>
         </HBox>
     </top>
     <left>
-        <VBox style="-fx-background-color: #b4acd0;">
+        <VBox style="-fx-background-color: #c0d6e1;" spacing="10">
             <Separator/>
-            <Label text="Date" style="-fx-font-size: 26px; -fx-text-fill: cyan;"/>
+            <Label text="Date" style="-fx-font-size: 26px; -fx-text-fill: #0360a1;"/>
             <HBox>
                 <Label text="De "/>
                 <TextField/>
@@ -34,8 +34,8 @@
                 <TextField/>
             </HBox>
             <Separator/>
-            <Label text="Localisation" style="-fx-font-size: 26px; -fx-text-fill: cyan;"/>
-            <ComboBox fx:id="dep" promptText="Département" onMouseClicked="#debut" />
+            <Label text="Localisation" style="-fx-font-size: 26px; -fx-text-fill: #0360a1;"/>
+            <ComboBox fx:id="dep" promptText="Département" onMouseClicked="#initialize" />
             <HBox>
                 <TextField promptText="Latitude"/>
                 <TextField promptText="Longitude"/>
@@ -46,7 +46,7 @@
         <GridPane style="-fx-border-color: blue;-fx-border-width: 1px;-fx-border-radius: 5px;" />
     </center>
     <right>
-        <Pane style="-fx-background-color: #b4acd0;">
+        <Pane style="-fx-background-color: #c0d6e1;" prefWidth="500" prefHeight="400">
             <MapView fx:id="mapView" prefWidth="500" prefHeight="400" />
         </Pane>
     </right>

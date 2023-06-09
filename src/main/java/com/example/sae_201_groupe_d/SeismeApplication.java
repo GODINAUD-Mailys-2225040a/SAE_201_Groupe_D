@@ -10,9 +10,11 @@ import java.io.IOException;
 public class SeismeApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        System.setProperty("javafx.platform", "desktop");
+        System.setProperty("http.agent", "Gluon Mobile/1.0.3");
         FXMLLoader fxmlLoader = new FXMLLoader(SeismeApplication.class.getResource("seisme-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 1000);
-        stage.setTitle("Hello!");
+        stage.setTitle("SysFR");
         stage.setScene(scene);
         stage.show();
     }

@@ -46,11 +46,11 @@ public class SeismeCSVLine //Challah ça marche, à tester
 
     private void init(String csvName)
     {
-        try (FileInputStream file = new FileInputStream("/Users/olivierrossi/IdeaProjects/SAE_201_Groupe_D/src/main/resources/com/example/sae_201_groupe_d/SisFrance_seismes_20230605145730.csv")) {
+        try (FileInputStream file = new FileInputStream("SAE_201_Groupe_D/src/main/resources/com/example/sae_201_groupe_d/SisFrance_seismes_20230605145730.csv")) {
             System.out.println("file ok");
-            while (file.()) {
-                usableList.add(getRecordFromLine(file.nextLine()));
-            }
+       //     while (file.()) {
+         //       usableList.add(getRecordFromLine(file.nextLine()));
+           // }
         } catch (Exception failed) {System.out.println("file failed");}
     }
 
