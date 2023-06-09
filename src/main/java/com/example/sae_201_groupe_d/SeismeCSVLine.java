@@ -31,9 +31,27 @@ public class SeismeCSVLine //Challah ça marche, à tester
 
     private ArrayList<SeismeCSVLine> usableList;
 
+    public SeismeCSVLine(String csvName)
+    {
+        //Constructeur complet
+        super();
+        init(csvName);
+        this.csvName = csvName;
+    }
     public SeismeCSVLine()
     {
+        //Constructeur complet
         super();
+    }
+
+    private void init(String csvName)
+    {
+        try (FileInputStream file = new FileInputStream("SAE_201_Groupe_D/src/main/resources/com/example/sae_201_groupe_d/SisFrance_seismes_20230605145730.csv")) {
+            System.out.println("file ok");
+       //     while (file.()) {
+         //       usableList.add(getRecordFromLine(file.nextLine()));
+           // }
+        } catch (Exception failed) {System.out.println("file failed");}
     }
 
     private SeismeCSVLine getRecordFromLine(String line) {
