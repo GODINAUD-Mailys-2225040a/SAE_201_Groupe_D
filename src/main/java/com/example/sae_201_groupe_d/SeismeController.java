@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import com.gluonhq.maps.MapView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import java.util.ArrayList;
 
 
 public class SeismeController {
@@ -30,6 +31,10 @@ public class SeismeController {
     private TextField lon;
 
     private SeismeCSVReader file;
+
+    private ArrayList<SeismeCSVLine> listeFiltree;
+
+    private ArrayList<String> listeDeFiltre;
 
      ObservableList<String> options = FXCollections.observableArrayList(
                     "Ain",
@@ -139,6 +144,17 @@ public class SeismeController {
 
         file = new SeismeCSVReader("src/main/resources/com/example/sae_201_groupe_d/SisFrance_seismes_20230605145730.csv");
 
+        dep.setOnAction( actionEvent -> {
+            listeFiltree = filtre();
+            int col = 0;
+            int row = 0;
+            for (SeismeCSVLine line : listeFiltree)
+            {
+                Label label = new Label(line.toString());
+                donnees.add(label, col, row);
+                ++row;
+            }
+        });
     }
 
     @FXML
@@ -149,6 +165,7 @@ public class SeismeController {
 
     @FXML
     protected void recherchedep(){
+        listeDeFiltre.add("departement");
         String depSelecte = dep.getValue();
         double latitude = 0;
         double longitude = 0;
@@ -188,8 +205,7 @@ public class SeismeController {
         } else if (depSelecte.equals("Aveyron")) {
             latitude = 44.3494;
             longitude = 2.5727;
-        }
-        else if (depSelecte.equals("Bouches-du-Rhône")) {
+        } else if (depSelecte.equals("Bouches-du-Rhône")) {
             latitude = 43.5297;
             longitude = 5.4474;
         } else if (depSelecte.equals("Calvados")) {
@@ -440,5 +456,34 @@ public class SeismeController {
         mapView.setZoom(10);
         mapView.setCenter(latitude, longitude);
 
+    }
+
+    private ArrayList<SeismeCSVLine> filtre()
+    {
+        ArrayList<SeismeCSVLine> liste = new ArrayList<>();
+        boolean dejaFiltreeUneFois = false;
+
+        for (String filtre : listeDeFiltre)
+        {
+            if(dejaFiltreeUneFois)
+            {
+                System.out.println("bruh");
+            }
+            else {
+
+                switch (filtre)
+                {
+                    case ("departement"):
+                        for (SeismeCSVLine ligne : file.getUsablelist())
+                        {
+                            if (ligne.getRegionEpicentrale() == dep.getValue())
+                                liste.add(ligne);
+                        }
+                }
+                dejaFiltreeUneFois = true;
+            }
+        }
+
+        return liste;
     }
 }

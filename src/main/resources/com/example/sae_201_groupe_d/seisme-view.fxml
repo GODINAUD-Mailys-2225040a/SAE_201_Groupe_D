@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.sae_201_groupe_d.SeismeController">
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae_201_groupe_d.SeismeController">
     <top>
         <HBox alignment="CENTER" style="-fx-background-color: #0f70ff;">
             <Label alignment="CENTER" style="-fx-font-size: 26px; -fx-font-family: Amiri; -fx-fill: white; " text="Séismes depuis 1000 ans" />
@@ -22,7 +22,7 @@
             </HBox>
             <Separator />
             <Label style="-fx-font-size: 26px; -fx-text-fill: #0360a1;" text="Localisation" />
-            <ComboBox fx:id="dep" onAction="#recherchedep" promptText="Département" />
+            <ComboBox fx:id="dep" onAction="#recherchedep" promptText="Région" />
             <HBox>
                 <TextField fx:id="lat" onAction="#recherchecoordonnees" promptText="Latitude" />
                 <TextField fx:id="lon" onAction="#recherchecoordonnees" promptText="Longitude" />

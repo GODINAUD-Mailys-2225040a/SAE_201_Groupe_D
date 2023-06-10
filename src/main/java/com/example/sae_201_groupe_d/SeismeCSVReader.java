@@ -32,7 +32,7 @@ public class SeismeCSVReader
 
                 usablelist.add(line);
             }
-        } catch (Exception e) {System.out.println("bruh");}
+        } catch (Exception e) {System.out.println("euh");}
     }
 
 }
