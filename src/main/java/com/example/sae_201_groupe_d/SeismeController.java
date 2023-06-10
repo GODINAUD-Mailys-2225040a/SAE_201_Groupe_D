@@ -185,7 +185,7 @@ public class SeismeController {
             latitude = 44.3494;
             longitude = 2.5727;
         }
-        if (selectedDepartement.equals("Bouches-du-Rhône")) {
+        else if (selectedDepartement.equals("Bouches-du-Rhône")) {
             latitude = 43.5297;
             longitude = 5.4474;
         } else if (selectedDepartement.equals("Calvados")) {
@@ -433,7 +433,7 @@ public class SeismeController {
             latitude = 49.0728;
             longitude = 2.1510;
         }
-        mapView.setZoom(8);
+        mapView.setZoom(10);
         mapView.setCenter(latitude, longitude);
 
     }
