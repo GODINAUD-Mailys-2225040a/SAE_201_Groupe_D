@@ -1,8 +1,5 @@
 package com.example.sae_201_groupe_d;
 
-import com.gluonhq.maps.MapView;
-import javafx.fxml.FXML;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.lang.reflect.Executable;
@@ -13,8 +10,6 @@ import java.util.Scanner;
 public class SeismeCSVLine //Challah ça marche, à tester
 {
     private String csvName;
-    @FXML
-    private MapView mapView;
 
     private Integer id;
     private String date;
@@ -30,14 +25,6 @@ public class SeismeCSVLine //Challah ça marche, à tester
     private String qualIntEpicentrale;
 
     private ArrayList<SeismeCSVLine> usableList;
-
-    public SeismeCSVLine(String csvName)
-    {
-        //Constructeur complet
-        super();
-        init(csvName);
-        this.csvName = csvName;
-    }
     public SeismeCSVLine()
     {
         //Constructeur complet
@@ -46,11 +33,11 @@ public class SeismeCSVLine //Challah ça marche, à tester
 
     private void init(String csvName)
     {
-        try (FileInputStream file = new FileInputStream("SAE_201_Groupe_D/src/main/resources/com/example/sae_201_groupe_d/SisFrance_seismes_20230605145730.csv")) {
+        try (FileInputStream file = new FileInputStream(csvName)) {
             System.out.println("file ok");
-       //     while (file.()) {
-         //       usableList.add(getRecordFromLine(file.nextLine()));
-           // }
+            //while (file.()) {
+            //    usableList.add(getRecordFromLine(file.nextLine()));
+            //}
         } catch (Exception failed) {System.out.println("file failed");}
     }
 

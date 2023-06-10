@@ -21,6 +21,7 @@ public class SeismeApplication extends Application {
 
     public static void main(String[] args) {
         SeismeCSVReader csvr = new SeismeCSVReader("src/main/resources/com/example/sae_201_groupe_d/SisFrance_seismes_20230605145730.csv");
-        launch();
+        System.out.println(csvr);
+        //launch();
     }
 }
