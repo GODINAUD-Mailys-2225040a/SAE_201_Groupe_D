@@ -89,6 +89,54 @@ public class SeismeCSVLine
         }
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getHeure() {
+        return heure;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getRegionEpicentrale() {
+        return regionEpicentrale;
+    }
+
+    public String getChoc() {
+        return choc;
+    }
+
+    public Double getRgfX() {
+        return rgfX;
+    }
+
+    public Double getRgfY() {
+        return rgfY;
+    }
+
+    public Double getLatitudeWGS84() {
+        return latitudeWGS84;
+    }
+
+    public Double getLongitudeWGS84() {
+        return longitudeWGS84;
+    }
+
+    public Double getIntEpicentrale() {
+        return intEpicentrale;
+    }
+
+    public String getQualIntEpicentrale() {
+        return qualIntEpicentrale;
+    }
+
     @Override
     public String toString() {
         return "SeismeCSVLine[" +

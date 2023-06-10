@@ -9,9 +9,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import com.gluonhq.maps.MapView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 
 
 public class SeismeController {
+
+    @FXML
+    private GridPane donnees;
 
     @FXML
     private MapView mapView;
