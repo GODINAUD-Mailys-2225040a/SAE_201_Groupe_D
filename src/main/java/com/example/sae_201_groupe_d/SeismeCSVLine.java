@@ -1,8 +1,5 @@
 package com.example.sae_201_groupe_d;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.lang.reflect.Executable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,7 +8,7 @@ public class SeismeCSVLine
 {
     private Integer id;
     private String date;
-    private Integer heure;
+    private String heure;
     private String nom;
     private String regionEpicentrale;
     private String choc;
@@ -24,21 +21,8 @@ public class SeismeCSVLine
 
     public SeismeCSVLine()
     {
-        //Constructeur complet
         super();
     }
-
-    /*
-    private void init(String csvName)
-    {
-        try (FileInputStream file = new FileInputStream(csvName)) {
-            System.out.println("file ok");
-            //while (file.()) {
-            //    usableList.add(getRecordFromLine(file.nextLine()));
-            //}
-        } catch (Exception failed) {System.out.println("file failed");}
-    }
-    */
 
     public void getRecordFromLine(String line) {
 
@@ -55,9 +39,9 @@ public class SeismeCSVLine
             while (rowScanner.hasNext()) {
                 ++cpt;
                 String current = new String(rowScanner.next());
-                System.out.println(current);
-                if (current.isEmpty())
+                if (current.isEmpty()) {
                     privateFields.set(cpt, null);
+                }
                 else {
                     switch (cpt)
                     {
@@ -68,7 +52,7 @@ public class SeismeCSVLine
                             this.date = (current);
                             break;
                         case (3):
-                            this.heure = (Integer.parseInt(current));
+                            this.heure = (current);
                             break;
                         case (4):
                             this.nom = (current);
@@ -105,22 +89,9 @@ public class SeismeCSVLine
         }
     }
 
-    public void setId(Integer id) {this.id = id;}
-    public void setDate(String date) {this.date = date;}
-    public void setHeure(Integer heure) {this.heure = heure;}
-    public void setNom(String nom) {this.nom = nom;}
-    public void setRegionEpicentrale(String regionEpicentrale) {this.regionEpicentrale = regionEpicentrale;}
-    public void setChoc(String choc) {this.choc = choc;}
-    public void setRgfX(Double rgfX) {this.rgfX = rgfX;}
-    public void setRgfY(Double rgfY) {this.rgfY = rgfY;}
-    public void setLatitudeWGS84(Double latitudeWGS84) {this.latitudeWGS84 = latitudeWGS84;}
-    public void setLongitudeWGS84(Double longitudeWGS84) {this.longitudeWGS84 = longitudeWGS84;}
-    public void setIntEpicentrale(Double intEpicentrale) {this.intEpicentrale = intEpicentrale;}
-    public void setQualIntEpicentrale(String qualIntEpicentrale) {this.qualIntEpicentrale = qualIntEpicentrale;}
-
     @Override
     public String toString() {
-        return "SeismeFilter[" +
+        return "SeismeCSVLine[" +
                 "id=" + id +
                 ", date='" + date + '\'' +
                 ", heure=" + heure +
