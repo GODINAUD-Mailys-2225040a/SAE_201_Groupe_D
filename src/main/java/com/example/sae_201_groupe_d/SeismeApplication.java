@@ -13,7 +13,7 @@ public class SeismeApplication extends Application {
         System.setProperty("javafx.platform", "desktop");
         System.setProperty("http.agent", "Gluon Mobile/1.0.3");
         FXMLLoader fxmlLoader = new FXMLLoader(SeismeApplication.class.getResource("seisme-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 1000);
+        Scene scene = new Scene(fxmlLoader.load(), 1800, 1000);
         stage.setTitle("SysFR");
         stage.setScene(scene);
         stage.show();
@@ -22,6 +22,6 @@ public class SeismeApplication extends Application {
     public static void main(String[] args) {
         SeismeCSVReader csvr = new SeismeCSVReader("src/main/resources/com/example/sae_201_groupe_d/SisFrance_seismes_20230605145730.csv");
         System.out.println(csvr);
-        //launch();
+        launch();
     }
 }
