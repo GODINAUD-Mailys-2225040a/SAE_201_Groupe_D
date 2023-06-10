@@ -1,5 +1,7 @@
 package com.example.sae_201_groupe_d;
 
+import javafx.beans.property.MapProperty;
+import javafx.beans.property.SimpleMapProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,7 +26,7 @@ public class SeismeController {
     private TextField lon;
 
 
-    ObservableList<String> options = FXCollections.observableArrayList(
+     ObservableList<String> options = FXCollections.observableArrayList(
                     "Ain",
                     "Aisne",
                     "Allier",
@@ -132,7 +134,7 @@ public class SeismeController {
     }
 
     @FXML
-    protected void recherche(){
+    protected void recherchecoordonnees(){
         mapView.setCenter(Double.parseDouble(lat.getText()), Double.parseDouble(lon.getText()));
         mapView.setZoom(8);
     }

@@ -37,8 +37,8 @@
             <Label text="Localisation" style="-fx-font-size: 26px; -fx-text-fill: #0360a1;"/>
             <ComboBox fx:id="dep" promptText="Département"  />
             <HBox>
-                <TextField fx:id="lat" promptText="Latitude" onAction="#recherche"/>
-                <TextField fx:id="lon" promptText="Longitude" onAction="#recherche"/>
+                <TextField fx:id="lat" promptText="Latitude" onAction="#recherchecoordonnees"/>
+                <TextField fx:id="lon" promptText="Longitude" onAction="#recherchecoordonnees"/>
             </HBox>
         </VBox>
     </left>
