@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import com.gluonhq.maps.MapView;
+import javafx.scene.control.TextField;
 
 
 public class SeismeController {
@@ -15,6 +16,13 @@ public class SeismeController {
 
     @FXML
     private ComboBox<String> dep;
+
+    @FXML
+    private TextField lat;
+
+    @FXML
+    private TextField lon;
+
 
     ObservableList<String> options = FXCollections.observableArrayList(
                     "Ain",
@@ -125,7 +133,8 @@ public class SeismeController {
 
     @FXML
     protected void recherche(){
-
+        mapView.setCenter(Double.parseDouble(lat.getText()), Double.parseDouble(lon.getText()));
+        mapView.setZoom(8);
     }
 
 }
