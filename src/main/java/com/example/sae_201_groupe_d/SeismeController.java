@@ -100,289 +100,135 @@ public class SeismeController {
         double latitude = 0;
         double longitude = 0;
         if (depSelecte.equals("CHARENTES")) {
-            latitude = 46.2050;
-            longitude = 5.2254;
+            latitude = 45.7;
+            longitude = 0.5;
         } else if (depSelecte.equals("NIVERNAIS")) {
-            latitude = 49.4919;
-            longitude = 3.5715;
+            latitude = 47;
+            longitude = 3.5;
         } else if (depSelecte.equals("POITOU")) {
-            latitude = 46.2070;
-            longitude = 3.3400;
+            latitude = 46.6;
+            longitude = 0;
         } else if (depSelecte.equals("NORMANDIE")) {
-            latitude = 44.0926;
-            longitude = 6.2352;
+            latitude = 49;
+            longitude = -0.5;
         } else if (depSelecte.equals("FRANCHE-COMPTE")) {
-            latitude = 44.6235;
-            longitude = 6.4527;
+            latitude = 47.1;
+            longitude = 6.3;
         } else if (depSelecte.equals("ANJOU")) {
-            latitude = 43.9119;
-            longitude = 7.0796;
+            latitude = 47.4;
+            longitude = -0.25;
         } else if (depSelecte.equals("DAUPHINE")) {
-            latitude = 44.7350;
-            longitude = 4.5990;
+            latitude = 44.9;
+            longitude = 5.7;
         } else if (depSelecte.equals("CEVENNES")) {
-            latitude = 49.5421;
-            longitude = 4.7275;
-        } else if (depSelecte.equals("")) {
-            latitude = 42.9242;
-            longitude = 1.6172;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.3616;
-            longitude = 4.0742;
-        } else if (depSelecte.equals("")) {
-            latitude = 43.2134;
-            longitude = 2.3496;
-        } else if (depSelecte.equals("")) {
-            latitude = 44.3494;
-            longitude = 2.5727;
+            latitude = 44.35;
+            longitude = 3.75;
+        } else if (depSelecte.equals("GUYENNE")) {
+            latitude = 45.2;
+            longitude = 0;
+        } else if (depSelecte.equals("ALSACE")) {
+            latitude = 47.75;
+            longitude = 7.5;
+        } else if (depSelecte.equals("BRETAGNE")) {
+            latitude = 48.5;
+            longitude = -3.3;
+        } else if (depSelecte.equals("PYRENEES CENTRALES")) {
+            latitude = 43.1;
+            longitude = 0.9;
         }
-        else if (depSelecte.equals("")) {
-            latitude = 43.5297;
-            longitude = 5.4474;
-        } else if (depSelecte.equals("")) {
-            latitude = 49.0322;
-            longitude = -0.1667;
-        } else if (depSelecte.equals("")) {
-            latitude = 45.0606;
-            longitude = 2.9046;
-        } else if (depSelecte.equals("")) {
-            latitude = 45.8415;
-            longitude = -0.3870;
-        } else if (depSelecte.equals("")) {
-            latitude = 45.8900;
-            longitude = -0.9721;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.0820;
-            longitude = 2.3973;
-        } else if (depSelecte.equals("")) {
-            latitude = 45.3378;
-            longitude = 1.8301;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.3230;
-            longitude = 4.7821;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.4914;
-            longitude = -2.9228;
-        } else if (depSelecte.equals("")) {
-            latitude = 46.1662;
-            longitude = 1.8883;
-        } else if (depSelecte.equals("")) {
-            latitude = 45.0706;
-            longitude = 0.7182;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.2500;
-            longitude = 6.0215;
-        } else if (depSelecte.equals("")) {
-            latitude = 44.6914;
-            longitude = 5.0750;
-        } else if (depSelecte.equals("")) {
-            latitude = 49.0540;
-            longitude = 1.1501;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.4407;
-            longitude = 1.5093;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.2020;
-            longitude = -4.3016;
-        } else if (depSelecte.equals("")) {
-            latitude = 43.8367;
-            longitude = 4.3601;
-        } else if (depSelecte.equals("")) {
-            latitude = 43.6047;
-            longitude = 1.4442;
-        } else if (depSelecte.equals("")) {
-            latitude = 43.7302;
-            longitude = 0.6920;
-        } else if (depSelecte.equals("")) {
-            latitude = 44.6488;
-            longitude = -0.4652;
-        } else if (depSelecte.equals("")) {
-            latitude = 43.5912;
-            longitude = 3.2584;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.1147;
-            longitude = -1.6849;
-        } else if (depSelecte.equals("")) {
-            latitude = 46.8388;
-            longitude = 1.7411;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.2197;
-            longitude = 0.9687;
-        } else if (depSelecte.equals("")) {
-            latitude = 45.2395;
-            longitude = 5.5370;
-        } else if (depSelecte.equals("")) {
-            latitude = 46.7209;
-            longitude = 5.7910;
-        } else if (depSelecte.equals("")) {
-            latitude = 43.9651;
-            longitude = -0.6278;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.5685;
-            longitude = 1.3306;
-        } else if (depSelecte.equals("")) {
-            latitude = 45.7407;
-            longitude = 4.5261;
-        } else if (depSelecte.equals("")) {
-            latitude = 45.1287;
-            longitude = 3.8333;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.2667;
-            longitude = -1.4500;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.9022;
-            longitude = 2.1282;
-        } else if (depSelecte.equals("")) {
-            latitude = 44.5980;
-            longitude = 1.6896;
-        } else if (depSelecte.equals("")) {
-            latitude = 44.3155;
-            longitude = 0.5169;
-        } else if (depSelecte.equals("")) {
-            latitude = 44.3847;
-            longitude = 3.4931;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.4732;
-            longitude = -0.5510;
-        } else if (depSelecte.equals("")) {
-            latitude = 49.2416;
-            longitude = -1.3536;
-        } else if (depSelecte.equals("")) {
-            latitude = 49.0833;
-            longitude = 4.0417;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.0667;
-            longitude = 5.1500;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.3012;
-            longitude = -0.6417;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.6848;
-            longitude = 6.1650;
-        } else if (depSelecte.equals("")) {
-            latitude = 49.1098;
-            longitude = 5.2319;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.6556;
-            longitude = -2.9530;
-        } else if (depSelecte.equals("")) {
-            latitude = 49.1199;
-            longitude = 6.1765;
-        } else if (depSelecte.equals("")) {
-            latitude = 46.9864;
-            longitude = 3.1621;
-        } else if (depSelecte.equals("")) {
-            latitude = 50.6292;
-            longitude = 3.0573;
-        } else if (depSelecte.equals("")) {
-            latitude = 49.3550;
-            longitude = 2.7844;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.5907;
-            longitude = -0.0061;
-        } else if (depSelecte.equals("")) {
-            latitude = 50.5200;
-            longitude = 2.6200;
-        } else if (depSelecte.equals("")) {
-            latitude = 45.7664;
-            longitude = 3.1097;
-        } else if (depSelecte.equals("")) {
-            latitude = 43.3219;
-            longitude = -0.6838;
-        } else if (depSelecte.equals("")) {
-            latitude = 43.0880;
-            longitude = 0.0313;
-        } else if (depSelecte.equals("")) {
-            latitude = 42.6110;
-            longitude = 2.3447;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.5833;
-            longitude = 7.7500;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.8960;
-            longitude = 7.3549;
-        } else if (depSelecte.equals("")) {
-            latitude = 45.7578;
-            longitude = 4.8320;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.6389;
-            longitude = 6.1264;
-        } else if (depSelecte.equals("")) {
-            latitude = 46.8267;
-            longitude = 4.6007;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.9613;
-            longitude = 0.2181;
-        } else if (depSelecte.equals("")) {
-            latitude = 45.5667;
-            longitude = 6.3000;
-        } else if (depSelecte.equals("")) {
-            latitude = 46.0523;
-            longitude = 6.7412;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.8566;
-            longitude = 2.3522;
-        } else if (depSelecte.equals("")) {
-            latitude = 49.4431;
-            longitude = 1.1034;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.5412;
-            longitude = 2.6554;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.8155;
-            longitude = 2.1959;
-        } else if (depSelecte.equals("")) {
-            latitude = 46.3242;
-            longitude = -0.4658;
-        } else if (depSelecte.equals("")) {
-            latitude = 49.9017;
-            longitude = 2.3022;
-        } else if (depSelecte.equals("")) {
-            latitude = 43.9309;
-            longitude = 2.1469;
-        } else if (depSelecte.equals("")) {
-            latitude = 44.0446;
-            longitude = 1.3524;
-        } else if (depSelecte.equals("")) {
-            latitude = 43.5247;
-            longitude = 6.9314;
-        } else if (depSelecte.equals("")) {
-            latitude = 43.9470;
-            longitude = 4.8087;
-        } else if (depSelecte.equals("")) {
-            latitude = 46.6712;
-            longitude = -1.4274;
-        } else if (depSelecte.equals("")) {
-            latitude = 46.5810;
-            longitude = 0.3369;
-        } else if (depSelecte.equals("")) {
-            latitude = 45.8336;
-            longitude = 1.2611;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.1730;
-            longitude = 6.4510;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.7995;
-            longitude = 3.5669;
-        } else if (depSelecte.equals("")) {
-            latitude = 47.6391;
-            longitude = 6.8628;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.4980;
-            longitude = 2.4634;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.8285;
-            longitude = 2.2137;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.9102;
-            longitude = 2.4846;
-        } else if (depSelecte.equals("")) {
-            latitude = 48.7793;
-            longitude = 2.491;
-        }
-        else if (depSelecte.equals("")) {
-            latitude = 49.0728;
-            longitude = 2.1510;
+        else if (depSelecte.equals("BERRY")) {
+            latitude = 46.9;
+            longitude = 2;
+        } else if (depSelecte.equals("PYRENEES ORIENTALES")) {
+            latitude = 42.5;
+            longitude = 2.75;
+        } else if (depSelecte.equals("PROVENCE")) {
+            latitude = 44;
+            longitude = 5.75;
+        } else if (depSelecte.equals("PAYS NANTAIS ET VENDEEN")) {
+            latitude = 47.25;
+            longitude = -1;
+        } else if (depSelecte.equals("AUVERGNE")) {
+            latitude = 45.7;
+            longitude = 3;
+        } else if (depSelecte.equals("LORRAINE")) {
+            latitude = 49;
+            longitude = 6.2;
+        } else if (depSelecte.equals("QUERCY-ROUERGUE")) {
+            latitude = 44.4;
+            longitude = 2;
+        } else if (depSelecte.equals("ALPES MARITIMES")) {
+            latitude = 43.9;
+            longitude = 7;
+        } else if (depSelecte.equals("ALPES PROVENCALES")) {
+            latitude = 44.3;
+            longitude = 6.5;
+        } else if (depSelecte.equals("TOURAINE")) {
+            latitude = 47.3;
+            longitude = 1;
+        } else if (depSelecte.equals("PYRENEES OCCIDENTALES")) {
+            latitude = 43.1;
+            longitude = 0;
+        } else if (depSelecte.equals("LANGUEDOC")) {
+            latitude = 43.5;
+            longitude = 3.2;
+        } else if (depSelecte.equals("VAUCLUSE")) {
+            latitude = 44;
+            longitude = 5.2;
+        } else if (depSelecte.equals("FOREZ-LYONNAIS")) {
+            latitude = 45.75;
+            longitude = 4;
+        } else if (depSelecte.equals("LIMOUSIN")) {
+            latitude = 45.65;
+            longitude = 2;
+        } else if (depSelecte.equals("ALPES DAUPHINOISES")) {
+            latitude = 45.2;
+            longitude = 6;
+        } else if (depSelecte.equals("CHAMPAGNE")) {
+            latitude = 48.9;
+            longitude = 4;
+        } else if (depSelecte.equals("ILES ANGLO-NORMANDES")) {
+            latitude = 49.6;
+            longitude = -1.5;
+        } else if (depSelecte.equals("GASCOGNE")) {
+            latitude = 43.6;
+            longitude = 0.5;
+        } else if (depSelecte.equals("VOSGES")) {
+            latitude = 48;
+            longitude = 6.5;
+        } else if (depSelecte.equals("BOURGOGNE")) {
+            latitude = 47;
+            longitude = 4;
+        } else if (depSelecte.equals("ALPES SAVOYARDES")) {
+            latitude = 46;
+            longitude = 6.5;
+        } else if (depSelecte.equals("PICARDIE")) {
+            latitude = 49.65;
+            longitude = 3;
+        } else if (depSelecte.equals("BRESSE ET JURA BRESSAN")) {
+            latitude = 46.55;
+            longitude = 5.7;
+        } else if (depSelecte.equals("CORSE")) {
+            latitude = 42.5;
+            longitude = 9;
+        } else if (depSelecte.equals("FLANDRE-ARTOIS")) {
+            latitude = 50.75;
+            longitude = 3;
+        } else if (depSelecte.equals("BOURBONNAIS")) {
+            latitude = 46.6;
+            longitude = 3.4;
+        } else if (depSelecte.equals("MAINE")) {
+            latitude = 48.15;
+            longitude = 0;
+        } else if (depSelecte.equals("ILE-DE-FRANCE")) {
+            latitude = 48.7;
+            longitude = 2.7;
+        } else if (depSelecte.equals("ORLEANAIS-BLESOIS-PAYS CHARTRAIN")) {
+            latitude = 47.9;
+            longitude = 1.8;
+        } else if (depSelecte.equals("ARDENNE")) {
+            latitude = 49.9;
+            longitude = -4.5;
         }
         mapView.setZoom(10);
         mapView.setCenter(latitude, longitude);
