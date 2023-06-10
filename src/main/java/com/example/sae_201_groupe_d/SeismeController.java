@@ -25,6 +25,7 @@ public class SeismeController {
     @FXML
     private TextField lon;
 
+    private SeismeCSVReader file;
 
      ObservableList<String> options = FXCollections.observableArrayList(
                     "Ain",
@@ -131,6 +132,9 @@ public class SeismeController {
         dep.setItems(options);
         mapView.setZoom(5.5);
         mapView.setCenter(46.603354, 1.888334);
+
+        file = new SeismeCSVReader("src/main/resources/com/example/sae_201_groupe_d/SisFrance_seismes_20230605145730.csv");
+
     }
 
     @FXML

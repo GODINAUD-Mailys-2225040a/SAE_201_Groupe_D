@@ -1,7 +1,6 @@
 package com.example.sae_201_groupe_d;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,18 +23,16 @@ public class SeismeCSVReader
     private void init(String csvName)
     {
         try (Scanner file = new Scanner(new File(csvName))) {
-            System.out.println("file ok");
             file.nextLine();
             while (file.hasNext()) {
 
                 String nl = new String(file.nextLine());
-                System.out.println(nl);
                 SeismeCSVLine line = new SeismeCSVLine();
                 line.getRecordFromLine(nl);
 
                 usablelist.add(line);
             }
-        } catch (Exception e) {System.out.println("file failed");}
+        } catch (Exception e) {System.out.println("bruh");}
     }
 
 }
