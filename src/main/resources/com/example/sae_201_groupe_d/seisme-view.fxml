@@ -40,7 +40,7 @@
     </center>
     <right>
         <Pane prefHeight="400" prefWidth="500" style="-fx-background-color: #c0d6e1;">
-            <MapView fx:id="mapView" prefHeight="400" prefWidth="500" />
+            <MapView fx:id="mapView" prefHeight="800" prefWidth="600" />
         </Pane>
     </right>
 

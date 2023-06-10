@@ -230,7 +230,7 @@ public class SeismeController {
             latitude = 49.9;
             longitude = -4.5;
         }
-        mapView.setZoom(10);
+        mapView.setZoom(8.5);
         mapView.setCenter(latitude, longitude);
 
     }
