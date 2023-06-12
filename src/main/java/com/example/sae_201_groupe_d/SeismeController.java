@@ -5,10 +5,13 @@ import javafx.beans.property.MapProperty;
 import javafx.beans.property.SimpleMapProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import com.gluonhq.maps.MapView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
 import java.lang.reflect.Field;
@@ -42,6 +45,11 @@ public class SeismeController {
 
     @FXML
     private Label id, date, h, nom, RE, ch, X, Y, lati, longi, IE, QE;
+
+    @FXML
+    private Pane contenu;
+
+    private Node contenubase;
 
 
 
@@ -103,6 +111,24 @@ public class SeismeController {
 
         listeFiltre = new ArrayList<>();
         constructGrid();
+    }
+
+    @FXML
+    private void stats(ActionEvent event){
+        contenubase = contenu.getChildren().get(0);
+        contenu.getChildren().clear();
+
+        Pane newContent = new Pane();
+        Label text = new Label("test");
+        newContent.getChildren().add(text);
+        contenu.getChildren().add(newContent);
+
+    }
+
+    @FXML
+    private void donnees(ActionEvent event){
+        contenu.getChildren().clear();
+        contenu.getChildren().add(contenubase);
     }
 
     @FXML
