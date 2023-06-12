@@ -5,8 +5,6 @@ import javafx.beans.property.SimpleMapProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import com.gluonhq.maps.MapView;
 import javafx.scene.layout.GridPane;
@@ -318,7 +316,7 @@ public class SeismeController {
             latitude = 49.9;
             longitude = -4.5;
         }
-        mapView.setZoom(8.5);
+        mapView.setZoom(8);
         mapView.setCenter(latitude, longitude);
 
     }

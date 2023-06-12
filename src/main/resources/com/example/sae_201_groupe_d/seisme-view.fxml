@@ -33,6 +33,9 @@
                 <TextField promptText="Intensité minimum" />
                 <TextField promptText="Intensité maximum" />
             </HBox>
+            <Pane prefHeight="400" prefWidth="400" style="-fx-background-color: #c0d6e1;" >
+                <MapView fx:id="mapView" prefHeight="400" prefWidth="400"/>
+            </Pane>
         </VBox>
     </left>
     <center>
@@ -55,10 +58,4 @@
         </ScrollPane>
 
     </center>
-    <right>
-        <Pane prefHeight="400" prefWidth="500" style="-fx-background-color: #c0d6e1;">
-            <MapView fx:id="mapView" prefHeight="800" prefWidth="600" />
-        </Pane>
-    </right>
-
 </BorderPane>
