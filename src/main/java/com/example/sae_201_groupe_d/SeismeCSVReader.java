@@ -1,8 +1,7 @@
 package com.example.sae_201_groupe_d;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class SeismeCSVReader
 {
@@ -44,5 +43,21 @@ public class SeismeCSVReader
     {
         usablelist.removeAll(toRemove);
     }
+
+    /*
+    public void sortDate(boolean isAsc)
+    {
+        if (isAsc)
+        {
+            reinit();
+        }
+        else
+        {
+            Collections.reverse(usablelist);
+        }
+    }
+
+     */
+
 
 }

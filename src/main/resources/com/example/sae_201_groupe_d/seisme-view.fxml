@@ -34,7 +34,7 @@
                 <TextField fx:id="intBorneSup" onAction="#filtrerIntensite" promptText="Intensité maximum" />
             </HBox>
             <Separator/>
-            <Button fx:id="recherche" text="Recherche" onAction="#marqueurs" alignment="CENTER"/>
+            <Button fx:id="recherche" text="Recherche" alignment="CENTER"/>
             <Pane prefHeight="400" prefWidth="400" style="-fx-background-color: #c0d6e1;" >
                 <MapView fx:id="mapView" prefHeight="400" prefWidth="400"/>
             </Pane>
@@ -45,6 +45,9 @@
             <HBox spacing="10">
                 <Button text="Données" onAction="#donnees"/>
                 <Button text="Statistiques" onAction="#stats"/>
+                <Button text="Trier par dates"/>
+                <Button text="Trier par intensité"/>
+                <Button text="Trier par Region"/>
             </HBox>
             <ScrollPane>
                 <Pane fx:id="contenu">
