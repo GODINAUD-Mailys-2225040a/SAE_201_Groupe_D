@@ -16,9 +16,9 @@
             <Label style="-fx-font-size: 26px; -fx-text-fill: #0360a1;" text="Date" />
             <HBox>
                 <Label text="De " />
-                <TextField />
+                <TextField fx:id="dateBorneSup" onAction="#filtrerDate"/>
                 <Label text=" A " />
-                <TextField />
+                <TextField fx:id="dateBorneInf" onAction="#filtrerDate"/>
             </HBox>
             <Separator />
             <Label style="-fx-font-size: 26px; -fx-text-fill: #0360a1;" text="Localisation" />

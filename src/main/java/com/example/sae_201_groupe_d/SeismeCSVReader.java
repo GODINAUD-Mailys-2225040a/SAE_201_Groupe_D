@@ -31,7 +31,7 @@ public class SeismeCSVReader
 
                 usablelist.add(line);
             }
-        } catch (Exception e) {System.out.println("euh");}
+        } catch (Exception e) {System.out.println(e);}
     }
 
     public void reinit()

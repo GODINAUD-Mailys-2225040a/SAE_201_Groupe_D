@@ -80,11 +80,11 @@ public class SeismeCSVLine
                             break;
                         case(12):
                             this.qualIntEpicentrale = (current);
-                            cpt = 0;
                             break;
                         default:
                             System.out.println("fail " + cpt);
                     }
+                    if (cpt >= 12) {cpt = 0;}
                 }
             }
         }

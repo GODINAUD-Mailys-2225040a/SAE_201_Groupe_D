@@ -33,6 +33,9 @@ public class SeismeController {
     @FXML
     private TextField lon;
 
+    @FXML
+    private TextField dateBorneSup, dateBorneInf;
+
     private SeismeCSVReader file;
 
     private ArrayList<String> listeFiltre;
@@ -95,6 +98,9 @@ public class SeismeController {
         dep.setItems(options);
         mapView.setZoom(5.5);
         mapView.setCenter(46.603354, 1.888334);
+        dateBorneSup = new TextField();
+        dateBorneInf = new TextField();
+
         listeFiltre = new ArrayList<>();
         constructGrid();
     }
@@ -260,6 +266,13 @@ public class SeismeController {
         constructGrid();
     }
 
+    @FXML
+    protected void filtrerDate ()
+    {
+        //int dateBorneMin = dateBorneSup.getText();
+        //int dateBorneMax = dateBorneInf.getText();
+    }
+
     protected void filtrer (ArrayList<String> listeFiltree)
     {
         file.reinit();
@@ -292,70 +305,63 @@ public class SeismeController {
                 Label label = new Label();
                 switch (i) {
                     case (1):
-                        label.setText(line.getId().toString());
+                        if (line.getId() == null) {label.setText("");}
+                        else label.setText(line.getId().toString());
                         col ++;
                         break;
                     case (2):
-                        label.setText(line.getDate());
+                        if (line.getDate() == null) {label.setText("");}
+                        else label.setText(line.getDate());
                         col ++;
                         break;
                     case (3):
-                        if (line.getHeure() == null){
-                            label.setText("");
-                        }
-                        else {
-                            label.setText(line.getHeure());
-                        }
+                        if (line.getHeure() == null) {label.setText("");}
+                        else {label.setText(line.getHeure());}
                         col ++;
                         break;
                     case (4):
-                        label.setText(line.getNom());
+                        if (line.getNom() == null) {label.setText("");}
+                        else label.setText(line.getNom());
                         col ++;
                         break;
                     case (5):
-                        label.setText(line.getRegionEpicentrale());;
+                        if (line.getRegionEpicentrale() == null) {label.setText("");}
+                        else label.setText(line.getRegionEpicentrale());
                         col ++;
                         break;
                     case (6):
-                        if (line.getChoc() == null){
-                            label.setText("");
-                        }
+                        if (line.getChoc() == null) {label.setText("");}
                         else label.setText(line.getChoc());
                         col ++;
                         break;
                     case (7):
-                        if (line.getRgfX() == null){
-                            label.setText("");
-                        }
+                        if (line.getRgfX() == null) {label.setText("");}
                         else label.setText(line.getRgfX().toString());
                         col ++;
                         break;
                     case (8):
-                        if (line.getRgfY() == null){
-                            label.setText("");
-                        }
+                        if (line.getRgfY() == null) {label.setText("");}
                         else label.setText(line.getRgfY().toString());
                         col ++;
                         break;
                     case (9):
-                        if (line.getLongitudeWGS84() == null){
-                            label.setText("");
-                        }
+                        if (line.getLongitudeWGS84() == null) {label.setText("");}
                         else label.setText(line.getLongitudeWGS84().toString());
                         col ++;
                         break;
                     case (10):
-                        if (line.getLatitudeWGS84() == null){
-                            label.setText("");
-                        } else label.setText(line.getLatitudeWGS84().toString());
+                        if (line.getLatitudeWGS84() == null) {label.setText("");}
+                        else label.setText(line.getLatitudeWGS84().toString());
                         col ++;
                         break;
                     case (11):
-                        label.setText(line.getIntEpicentrale().toString());
+                        if (line.getIntEpicentrale() == null) {label.setText("");}
+                        else label.setText(line.getIntEpicentrale().toString());
                         col ++;
                         break;
                     case (12):
-                        label.setText(line.getQualIntEpicentrale());
+                        if (line.getQualIntEpicentrale() == null) {label.setText("");}
+                        else label.setText(line.getQualIntEpicentrale());
                         col ++;
                         break;
                     default:
