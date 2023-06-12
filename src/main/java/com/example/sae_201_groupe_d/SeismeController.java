@@ -10,9 +10,9 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import com.gluonhq.maps.MapView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Rectangle;
 
 import java.lang.reflect.Field;
 import java.net.ServerSocket;
@@ -62,7 +62,6 @@ public class SeismeController {
 
     private Node contenubase;
 
-
      ObservableList<String> options = FXCollections.observableArrayList(
              "CHARENTES",
              "NIVERNAIS",
@@ -110,9 +109,11 @@ public class SeismeController {
     );
 
 
+
     @FXML
     protected void initialize(){
         file = new SeismeCSVReader("src/main/resources/com/example/sae_201_groupe_d/SisFrance_seismes_20230605145730.csv");
+
         dep.setItems(options);
         mapView.setZoom(5.5);
         mapView.setCenter(46.603354, 1.888334);
