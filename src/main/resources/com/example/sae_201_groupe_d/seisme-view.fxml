@@ -43,7 +43,7 @@
     </left>
     <center>
         <VBox>
-            <HBox>
+            <HBox spacing="10">
                 <Button text="Données" onAction="#donnees"/>
                 <Button text="Statistiques" onAction="#stats"/>
             </HBox>

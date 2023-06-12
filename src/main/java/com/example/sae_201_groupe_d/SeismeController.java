@@ -52,7 +52,6 @@ public class SeismeController {
     private Node contenubase;
 
 
-
      ObservableList<String> options = FXCollections.observableArrayList(
              "CHARENTES",
              "NIVERNAIS",
@@ -146,8 +145,6 @@ public class SeismeController {
         mapView.setCenter(Double.parseDouble(lat.getText()), Double.parseDouble(lon.getText()));
         mapView.setZoom(8);
     }
-
-
 
     @FXML
     protected void recherchedep(){
