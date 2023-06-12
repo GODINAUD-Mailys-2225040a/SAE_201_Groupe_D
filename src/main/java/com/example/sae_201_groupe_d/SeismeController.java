@@ -330,7 +330,6 @@ public class SeismeController {
     protected void filtrer (ArrayList<String> listeFiltree)
     {
         file.reinit();
-
         ArrayList<SeismeCSVLine> toRemove = new ArrayList<>();
 
         for (String filtre : listeFiltree)
