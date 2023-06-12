@@ -1,5 +1,6 @@
 package com.example.sae_201_groupe_d;
 
+import com.gluonhq.maps.MapPoint;
 import javafx.beans.property.MapProperty;
 import javafx.beans.property.SimpleMapProperty;
 import javafx.collections.FXCollections;
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import com.gluonhq.maps.MapView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Rectangle;
 
 import java.lang.reflect.Field;
 import java.net.ServerSocket;
@@ -94,6 +96,16 @@ public class SeismeController {
     }
 
     @FXML
+    protected void marqueurs(){
+        for (int i = 1 ; i < tab.getRowCount() ; ++i){
+            for (int j = 0; j < tab.getColumnCount(); ++j){
+
+            }
+
+        }
+    }
+
+    @FXML
     protected void recherchecoordonnees(){
         mapView.setCenter(Double.parseDouble(lat.getText()), Double.parseDouble(lon.getText()));
         mapView.setZoom(8);
@@ -118,7 +130,7 @@ public class SeismeController {
             latitude = 49;
             longitude = -0.5;
         } else if (depSelecte.equals("FRANCHE-COMPTE")) {
-            latitude = 47.1;
+            latitude = 47;
             longitude = 6.3;
         } else if (depSelecte.equals("ANJOU")) {
             latitude = 47.4;
@@ -276,12 +288,10 @@ public class SeismeController {
                 switch (i) {
                     case (1):
                         label.setText(line.getId().toString());
-                        System.out.println(line.getId().toString());
                         col ++;
                         break;
                     case (2):
                         label.setText(line.getDate());
-                        System.out.println(line.getDate());
                         col ++;
                         break;
                     case (3):
@@ -290,7 +300,6 @@ public class SeismeController {
                         }
                         else {
                             label.setText(line.getHeure());
-                            System.out.println(line.getId().toString());
                         }
                         col ++;
                         break;
