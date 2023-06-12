@@ -273,7 +273,7 @@ public class SeismeController {
                 case("region") :
                     for (SeismeCSVLine line : file.getUsablelist())
                     {
-                        if (line.getRegionEpicentrale() != dep.getValue())
+                        if (!(line.getRegionEpicentrale().equals(dep.getValue())))
                             toRemove.add(line);
                     }
             }
