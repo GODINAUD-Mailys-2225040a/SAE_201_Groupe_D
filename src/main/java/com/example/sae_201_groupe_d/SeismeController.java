@@ -1,5 +1,6 @@
 package com.example.sae_201_groupe_d;
 
+import com.gluonhq.maps.MapLayer;
 import com.gluonhq.maps.MapPoint;
 import javafx.beans.property.MapProperty;
 import javafx.beans.property.SimpleMapProperty;
@@ -15,6 +16,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.geometry.Point2D;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 import java.lang.reflect.Field;
 import java.net.ServerSocket;
@@ -62,14 +66,7 @@ public class SeismeController {
     @FXML
     private Pane contenu;
 
-    @FXML
-    private TextField rayon;
-
     private Node contenubase;
-
-
-
-    //private boolean isAsc;
 
      ObservableList<String> options = FXCollections.observableArrayList(
              "CHARENTES",
@@ -126,7 +123,6 @@ public class SeismeController {
         dep.setItems(options);
         mapView.setZoom(5.5);
         mapView.setCenter(46.603354, 1.888334);
-        //isAsc = true;
 
         listeFiltre = new ArrayList<>();
         constructGrid();
@@ -153,15 +149,43 @@ public class SeismeController {
         contenu.getChildren().clear();
         contenu.getChildren().add(contenubase);
     }
-/*
-    @FXML
-    protected void marqueurs(Stage stage){
-        for (int i = 1 ; i < tab. ; ++i){
 
+    @FXML
+    protected void marqueurs(){
+        double latitude = 0;
+        double longitude = 0;
+        for (int i = 1 ; i < tab.getRowCount() ; ++i){
+            Node node = getNodeByRowColumnIndex(i,8, tab);
+
+            if (node instanceof TextField) {
+                TextField textField = (TextField) node;
+                latitude = Double.parseDouble(textField.getText());
+            }
+
+            Node node2 = getNodeByRowColumnIndex(i, 9, tab);
+            if (node instanceof TextField) {
+                TextField textField = (TextField) node;
+                longitude = Double.parseDouble(textField.getText());
+            }
+            MapPoint marqueur = new MapPoint(latitude, longitude);
+            MapLayer newLayer = new CustomCircleMarkerLayer(marqueur);
+            mapView.addLayer(newLayer);
         }
     }
 
- */
+    public Node getNodeByRowColumnIndex (final int row, final int column, GridPane tab) {
+        Node result = null;
+        ObservableList<Node> childrens = tab.getChildren();
+
+        for (Node node : childrens) {
+            if(tab.getRowIndex(node) == row && tab.getColumnIndex(node) == column) {
+                result = node;
+                break;
+            }
+        }
+
+        return result;
+    }
 
     @FXML
     protected void recherchecoordonnees(){
@@ -186,7 +210,7 @@ public class SeismeController {
         } else if (depSelecte.equals("NORMANDIE")) {
             latitude = 49;
             longitude = -0.5;
-        } else if (depSelecte.equals("FRANCHE-COMTE")) {
+        } else if (depSelecte.equals("FRANCHE-COMPTE")) {
             latitude = 47;
             longitude = 6.3;
         } else if (depSelecte.equals("ANJOU")) {
@@ -340,12 +364,6 @@ public class SeismeController {
         constructGrid();
     }
 
-    @FXML
-    protected void filtrerAlentours ()
-    {
-        listeFiltre.add("alentours");
-    }
-
     protected void filtrer (ArrayList<String> listeFiltree)
     {
         file.reinit();
@@ -377,38 +395,11 @@ public class SeismeController {
                                 line.getIntEpicentrale() > intBorneMax)
                             toRemove.add(line);
                     }
-                case("alentours") :
-                    for (SeismeCSVLine line : file.getUsablelist())
-                    {
-                        //if (line.getRgfX())
-                    }
             }
+            marqueurs();
         }
         file.removeLines(toRemove);
     }
-
-    /*
-    @FXML
-    protected void sortByDate()
-    {
-        file.sortDate(isAsc);
-        isAsc = !(isAsc);
-        constructGrid();
-    }
-
-    @FXML
-    protected void sortByIntensite()
-    {
-
-    }
-
-    @FXML
-    protected void sortByRegion()
-    {
-
-    }
-
-     */
 
     protected void constructGrid()
     {
@@ -461,13 +452,13 @@ public class SeismeController {
                         col ++;
                         break;
                     case (9):
-                        if (line.getLatitudeWGS84() == null) {label.setText("");}
-                        else label.setText(line.getLatitudeWGS84().toString());
+                        if (line.getLongitudeWGS84() == null) {label.setText("");}
+                        else label.setText(line.getLongitudeWGS84().toString());
                         col ++;
                         break;
                     case (10):
-                        if (line.getLongitudeWGS84() == null) {label.setText("");}
-                        else label.setText(line.getLongitudeWGS84().toString());
+                        if (line.getLatitudeWGS84() == null) {label.setText("");}
+                        else label.setText(line.getLatitudeWGS84().toString());
                         col ++;
                         break;
                     case (11):
