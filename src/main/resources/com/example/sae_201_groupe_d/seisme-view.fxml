@@ -42,21 +42,27 @@
         </VBox>
     </left>
     <center>
-        <ScrollPane>
-            <GridPane fx:id="tab" style="-fx-border-color: #000000;-fx-border-width: 1px;-fx-border-radius: 5px; -fx-background-color: #efe5c8; " hgap="5 " vgap="5">
-                <Label fx:id="id" text="Identifiant" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
-                <Label fx:id="date" text="Date (AAAA/MM/JJ)" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
-                <Label fx:id="h" text="Heure" GridPane.columnIndex="2" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
-                <Label fx:id="nom" text="Nom" GridPane.columnIndex="3" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
-                <Label fx:id="RE" text="Région Epicentrale" GridPane.columnIndex="4" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
-                <Label fx:id="ch" text="Choc" GridPane.columnIndex="5" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
-                <Label fx:id="X" text="X" GridPane.columnIndex="6" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
-                <Label fx:id="Y" text="Y" GridPane.columnIndex="7" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
-                <Label fx:id="lati" text="Latitude" GridPane.columnIndex="8" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
-                <Label fx:id="longi" text="Longitude" GridPane.columnIndex="9" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
-                <Label fx:id="IE" text="Intensité épicentrale" GridPane.columnIndex="10" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
-                <Label fx:id="QE" text="Qualité épicentrale" GridPane.columnIndex="11" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
-            </GridPane>
-        </ScrollPane>
+        <VBox>
+            <MenuBar>
+                <Menu text="Données"/>
+                <Menu text="Statistiques"/>
+            </MenuBar>
+            <ScrollPane>
+                <GridPane fx:id="tab" style="-fx-border-color: #000000;-fx-border-width: 1px;-fx-border-radius: 5px; -fx-background-color: #efe5c8; " hgap="5 " vgap="5">
+                    <Label fx:id="id" text="Identifiant" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
+                    <Label fx:id="date" text="Date (AAAA/MM/JJ)" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
+                    <Label fx:id="h" text="Heure" GridPane.columnIndex="2" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
+                    <Label fx:id="nom" text="Nom" GridPane.columnIndex="3" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
+                    <Label fx:id="RE" text="Région Epicentrale" GridPane.columnIndex="4" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
+                    <Label fx:id="ch" text="Choc" GridPane.columnIndex="5" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
+                    <Label fx:id="X" text="X" GridPane.columnIndex="6" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
+                    <Label fx:id="Y" text="Y" GridPane.columnIndex="7" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
+                    <Label fx:id="lati" text="Latitude" GridPane.columnIndex="8" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
+                    <Label fx:id="longi" text="Longitude" GridPane.columnIndex="9" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
+                    <Label fx:id="IE" text="Intensité épicentrale" GridPane.columnIndex="10" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
+                    <Label fx:id="QE" text="Qualité épicentrale" GridPane.columnIndex="11" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
+                </GridPane>
+            </ScrollPane>
+        </VBox>
     </center>
 </BorderPane>

@@ -122,6 +122,7 @@ public class SeismeController {
     }
 
 
+
     @FXML
     protected void recherchedep(){
         String depSelecte = dep.getValue();
