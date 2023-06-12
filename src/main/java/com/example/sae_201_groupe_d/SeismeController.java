@@ -418,13 +418,7 @@ public class SeismeController {
                         else if (calculateDistance(Double.parseDouble(lat.getText()), Double.parseDouble(lon.getText()),
                                 line.getLatitudeWGS84(), line.getLongitudeWGS84()) > Double.parseDouble(rayon.getText()))
                         {
-                            System.out.println(calculateDistance(Double.parseDouble(lat.getText()), Double.parseDouble(lon.getText()),
-                                    line.getLatitudeWGS84(), line.getLongitudeWGS84()));
                             toRemove.add(line);
-                        }
-                        else {
-                            System.out.println(calculateDistance(Double.parseDouble(lat.getText()), Double.parseDouble(lon.getText()),
-                                    line.getLatitudeWGS84(), line.getLongitudeWGS84()));
                         }
                     }
             }
