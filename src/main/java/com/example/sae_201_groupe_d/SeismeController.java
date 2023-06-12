@@ -9,6 +9,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import com.gluonhq.maps.MapView;
 import javafx.scene.image.Image;
@@ -139,10 +143,32 @@ public class SeismeController {
 
         BorderPane newContent = new BorderPane();
 
+        GridPane stats = new GridPane();
+
         Label text = new Label("Statistiques liées au tableau de données : ");
         newContent.setTop(text);
 
+        NumberAxis x = new NumberAxis();
+        NumberAxis y = new NumberAxis();
 
+        LineChart<Number, Number> lineChart = new LineChart<>(x, y);
+        lineChart.setTitle("Evolution du nombre de séismes en fonction du temps");
+
+
+        int rowCount = tab.getRowCount() ;
+        for (int rowIndex = 0; rowIndex < rowCount; rowIndex++){
+            String valeurString = ((GridPane) tab.getChildren().get(rowIndex)).getChildren().get(0).toString();
+            int valeur = Integer.parseInt(valeurString);
+
+            XYChart.Series<Number, Number> series = new XYChart.Series<>();
+            series.getData().add(new XYChart.Data<>(rowIndex + 1, valeur));
+
+            lineChart.getData().add(series);
+        }
+
+        stats.add(lineChart, 0,0);
+
+        newContent.setCenter(stats);
 
         contenu.getChildren().add(newContent);
     }
@@ -161,14 +187,14 @@ public class SeismeController {
             Node node = getNodeByRowColumnIndex(i,8, tab);
 
             if (node instanceof TextField) {
-                TextField textField = (TextField) node;
-                latitude = Double.parseDouble(textField.getText());
+                TextField textField1 = (TextField) node;
+                latitude = Double.parseDouble(textField1.getText());
             }
 
             Node node2 = getNodeByRowColumnIndex(i, 9, tab);
             if (node2 instanceof TextField) {
-                TextField textField = (TextField) node;
-                longitude = Double.parseDouble(textField.getText());
+                TextField textField2 = (TextField) node;
+                longitude = Double.parseDouble(textField2.getText());
             }
             MapPoint marqueur = new MapPoint(latitude, longitude);
             MapLayer newLayer = new CustomCircleMarkerLayer(marqueur);
@@ -433,6 +459,8 @@ public class SeismeController {
         listeFiltre.clear();
         filtrer(listeFiltre);
         constructGrid();
+        mapView.setZoom(5.5);
+        mapView.setCenter(46.603354, 1.888334);
     }
 
     protected void constructGrid()

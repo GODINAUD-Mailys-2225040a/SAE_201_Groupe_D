@@ -34,7 +34,6 @@
                 <TextField fx:id="intBorneSup" onAction="#filtrerIntensite" promptText="Intensité maximum" />
             </HBox>
             <Separator/>
-            <Button fx:id="recherche" text="Recherche" alignment="CENTER"/>
             <Pane prefHeight="400" prefWidth="400" style="-fx-background-color: #c0d6e1;" >
                 <MapView fx:id="mapView" prefHeight="400" prefWidth="400"/>
             </Pane>
