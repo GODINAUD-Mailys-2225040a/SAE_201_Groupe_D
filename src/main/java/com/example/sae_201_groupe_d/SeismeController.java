@@ -118,7 +118,6 @@ public class SeismeController {
     );
 
 
-
     @FXML
     protected void initialize(){
         file = new SeismeCSVReader("src/main/resources/com/example/sae_201_groupe_d/SisFrance_seismes_20230605145730.csv");
@@ -416,20 +415,30 @@ public class SeismeController {
                         {
                             toRemove.add(line);
                         }
-                        else if (distance(Double.parseDouble(lat.getText()), Double.parseDouble(lat.getText()),
+                        else if (calculateDistance(Double.parseDouble(lat.getText()), Double.parseDouble(lon.getText()),
                                 line.getLatitudeWGS84(), line.getLongitudeWGS84()) > Double.parseDouble(rayon.getText()))
                         {
+                            System.out.println(calculateDistance(Double.parseDouble(lat.getText()), Double.parseDouble(lon.getText()),
+                                    line.getLatitudeWGS84(), line.getLongitudeWGS84()));
                             toRemove.add(line);
                         }
                         else {
-                            System.out.println(distance(Double.parseDouble(lat.getText()), Double.parseDouble(lat.getText()),
+                            System.out.println(calculateDistance(Double.parseDouble(lat.getText()), Double.parseDouble(lon.getText()),
                                     line.getLatitudeWGS84(), line.getLongitudeWGS84()));
                         }
                     }
             }
         }
-        marqueurs();
+        //marqueurs();
         file.removeLines(toRemove);
+    }
+
+    @FXML
+    protected void removeFilters()
+    {
+        listeFiltre.clear();
+        filtrer(listeFiltre);
+        constructGrid();
     }
 
     protected void constructGrid()
@@ -513,35 +522,20 @@ public class SeismeController {
     }
 
 
-    private double distanceKmLatLon (double lat2, double lon2, double lat1, double lon1)
-    {
-        //formule de Harvesine
-        final double R = 6371; //Rayon de la Terre
+    public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        final double R = 6371;
 
-        Double latDistance = degreEnRad(lat2-lat1);
-        Double lonDistance = degreEnRad(lon2-lon1);
-        Double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2) +
-                Math.cos(degreEnRad(lat1)) * Math.cos(degreEnRad(lat2)) *
-                        Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
-        Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        Double distance = R * c;
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
 
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        double distance = R * c;
         return distance;
-    }
-    private double degreEnRad(double deg)
-    {
-        return deg * (Math.PI/180);
-    }
-
-    private double distance(double lat1, double lon1, double lat2, double lon2) {
-        double theta = lon1 - lon2;
-        double dist = Math.sin(degreEnRad(lat1)) * Math.sin(degreEnRad(lat2)) + Math.cos(degreEnRad(lat1)) *
-                Math.cos(degreEnRad(lat2)) * Math.cos(degreEnRad(theta));
-        dist = Math.acos(dist);
-        dist = degreEnRad(dist);
-        dist = dist * 60 * 1.1515;
-        dist = dist * 1.609344;
-        return (dist);
     }
 
 }

@@ -45,9 +45,7 @@
             <HBox spacing="10">
                 <Button text="Données" onAction="#donnees"/>
                 <Button text="Statistiques" onAction="#stats"/>
-                <Button text="Trier par dates"/>
-                <Button text="Trier par intensité"/>
-                <Button text="Trier par Region"/>
+                <Button text="Enlever tout les filtres" onAction="#removeFilters"/>
             </HBox>
             <ScrollPane>
                 <Pane fx:id="contenu">
