@@ -37,7 +37,11 @@ public class SeismeController {
     private TextField lon;
 
     @FXML
-    private TextField dateBorneSup, dateBorneInf;
+    private TextField dateBorneSup;
+
+    @FXML
+    private TextField dateBorneInf;
+    private int dateBorneMax, dateBorneMin;
 
     private SeismeCSVReader file;
 
@@ -105,8 +109,6 @@ public class SeismeController {
         dep.setItems(options);
         mapView.setZoom(5.5);
         mapView.setCenter(46.603354, 1.888334);
-        dateBorneSup = new TextField();
-        dateBorneInf = new TextField();
 
         listeFiltre = new ArrayList<>();
         constructGrid();
@@ -187,8 +189,7 @@ public class SeismeController {
         } else if (depSelecte.equals("PYRENEES CENTRALES")) {
             latitude = 43.1;
             longitude = 0.9;
-        }
-        else if (depSelecte.equals("BERRY")) {
+        } else if (depSelecte.equals("BERRY")) {
             latitude = 46.9;
             longitude = 2;
         } else if (depSelecte.equals("PYRENEES ORIENTALES")) {
@@ -293,8 +294,19 @@ public class SeismeController {
     @FXML
     protected void filtrerDate ()
     {
-        //int dateBorneMin = dateBorneSup.getText();
-        //int dateBorneMax = dateBorneInf.getText();
+        if (dateBorneSup.getText().isEmpty()) {
+            dateBorneMax = 2222;
+        }
+        else {dateBorneMax = Integer.parseInt(dateBorneSup.getText());}
+
+        if (dateBorneInf.getText().isEmpty()) {
+            dateBorneMin = 0;
+        }
+        else {dateBorneMin = Integer.parseInt(dateBorneInf.getText());}
+
+        listeFiltre.add("date");
+        filtrer(listeFiltre);
+        constructGrid();
     }
 
     protected void filtrer (ArrayList<String> listeFiltree)
@@ -311,6 +323,14 @@ public class SeismeController {
                     for (SeismeCSVLine line : file.getUsablelist())
                     {
                         if (!(line.getRegionEpicentrale().equals(dep.getValue())))
+                            toRemove.add(line);
+                    }
+                    break;
+                case("date") :
+                    for (SeismeCSVLine line : file.getUsablelist())
+                    {
+                        if (Integer.parseInt(line.getDate().substring(0, 4)) < dateBorneMin ||
+                                Integer.parseInt(line.getDate().substring(0, 4)) > dateBorneMax)
                             toRemove.add(line);
                     }
             }

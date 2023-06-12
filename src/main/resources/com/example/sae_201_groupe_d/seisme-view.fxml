@@ -16,9 +16,9 @@
             <Label style="-fx-font-size: 26px; -fx-text-fill: #0360a1;" text="Date" />
             <HBox>
                 <Label text="De " />
-                <TextField fx:id="dateBorneSup" onAction="#filtrerDate"/>
-                <Label text=" A " />
                 <TextField fx:id="dateBorneInf" onAction="#filtrerDate"/>
+                <Label text=" A " />
+                <TextField fx:id="dateBorneSup" onAction="#filtrerDate"/>
             </HBox>
             <Separator />
             <Label style="-fx-font-size: 26px; -fx-text-fill: #0360a1;" text="Localisation" />
@@ -48,7 +48,7 @@
                 <Button text="Statistiques" onAction="#stats"/>
             </HBox>
             <Pane fx:id="contenu">
-                <ScrollPane >
+                <ScrollPane>
                     <GridPane fx:id="tab" style="-fx-border-color: #000000;-fx-border-width: 1px;-fx-border-radius: 5px; -fx-background-color: #efe5c8; " hgap="5 " vgap="5">
                         <Label fx:id="id" text="Identifiant" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
                         <Label fx:id="date" text="Date (AAAA/MM/JJ)" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-font-size: 15"/>
