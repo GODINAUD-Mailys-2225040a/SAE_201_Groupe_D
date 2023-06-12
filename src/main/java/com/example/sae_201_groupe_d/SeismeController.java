@@ -43,6 +43,13 @@ public class SeismeController {
     private TextField dateBorneInf;
     private int dateBorneMax, dateBorneMin;
 
+    @FXML
+    private TextField intBorneSup;
+
+    @FXML
+    private TextField intBorneInf;
+    private double intBorneMax, intBorneMin;
+
     private SeismeCSVReader file;
 
     private ArrayList<String> listeFiltre;
@@ -294,17 +301,27 @@ public class SeismeController {
     @FXML
     protected void filtrerDate ()
     {
-        if (dateBorneSup.getText().isEmpty()) {
-            dateBorneMax = 2222;
-        }
+        if (dateBorneSup.getText().isEmpty()) {dateBorneMax = 2222;}
         else {dateBorneMax = Integer.parseInt(dateBorneSup.getText());}
 
-        if (dateBorneInf.getText().isEmpty()) {
-            dateBorneMin = 0;
-        }
+        if (dateBorneInf.getText().isEmpty()) {dateBorneMin = 0;}
         else {dateBorneMin = Integer.parseInt(dateBorneInf.getText());}
 
         listeFiltre.add("date");
+        filtrer(listeFiltre);
+        constructGrid();
+    }
+
+    @FXML
+    protected void filtrerIntensite ()
+    {
+        if (intBorneSup.getText().isEmpty()) {intBorneMax = 10.0;}
+        else {intBorneMax = Double.parseDouble(intBorneSup.getText());}
+
+        if (intBorneInf.getText().isEmpty()) {intBorneMin = 0.0;}
+        else {intBorneMin = Double.parseDouble(intBorneInf.getText());}
+
+        listeFiltre.add("intensite");
         filtrer(listeFiltre);
         constructGrid();
     }
@@ -331,6 +348,14 @@ public class SeismeController {
                     {
                         if (Integer.parseInt(line.getDate().substring(0, 4)) < dateBorneMin ||
                                 Integer.parseInt(line.getDate().substring(0, 4)) > dateBorneMax)
+                            toRemove.add(line);
+                    }
+                    break;
+                case("intensite") :
+                    for (SeismeCSVLine line : file.getUsablelist())
+                    {
+                        if (line.getIntEpicentrale() < intBorneMin ||
+                                line.getIntEpicentrale() > intBorneMax)
                             toRemove.add(line);
                     }
             }

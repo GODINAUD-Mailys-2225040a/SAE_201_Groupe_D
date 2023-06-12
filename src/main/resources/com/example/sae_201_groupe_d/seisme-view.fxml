@@ -31,8 +31,8 @@
             <Separator />
             <Label style="-fx-font-size: 26px; -fx-text-fill: #0360a1;" text="Intensité" />
             <HBox>
-                <TextField promptText="Intensité minimum" />
-                <TextField promptText="Intensité maximum" />
+                <TextField fx:id="intBorneInf" onAction="#filtrerIntensite" promptText="Intensité minimum" />
+                <TextField fx:id="intBorneSup" onAction="#filtrerIntensite" promptText="Intensité maximum" />
             </HBox>
             <Separator/>
             <Button fx:id="recherche" text="Recherche" onAction="#marqueurs" alignment="CENTER"/>
