@@ -25,14 +25,24 @@ public class SeismeCSVReader
         try (Scanner file = new Scanner(new File(csvName))) {
             file.nextLine();
             while (file.hasNext()) {
-
-                String nl = new String(file.nextLine());
+                String nl = (file.nextLine());
                 SeismeCSVLine line = new SeismeCSVLine();
                 line.getRecordFromLine(nl);
 
                 usablelist.add(line);
             }
         } catch (Exception e) {System.out.println("euh");}
+    }
+
+    public void reinit()
+    {
+        usablelist.removeAll(usablelist);
+        init(csvName);
+    }
+
+    public void removeLines (ArrayList<SeismeCSVLine> toRemove)
+    {
+        usablelist.removeAll(toRemove);
     }
 
 }

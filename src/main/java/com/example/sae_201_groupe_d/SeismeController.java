@@ -10,6 +10,8 @@ import com.gluonhq.maps.MapView;
 import javafx.scene.layout.GridPane;
 
 import java.lang.reflect.Field;
+import java.net.ServerSocket;
+import java.util.ArrayList;
 
 
 public class SeismeController {
@@ -30,6 +32,8 @@ public class SeismeController {
     private TextField lon;
 
     private SeismeCSVReader file;
+
+    private ArrayList<String> listeFiltre;
 
 
      ObservableList<String> options = FXCollections.observableArrayList(
@@ -85,92 +89,8 @@ public class SeismeController {
         dep.setItems(options);
         mapView.setZoom(5.5);
         mapView.setCenter(46.603354, 1.888334);
-
-        int row = 1;
-        int col = -1;
-        for (SeismeCSVLine line : file.getUsablelist()) {
-            for (int i = 1 ; i < 13 ; ++i) {
-                Label label = new Label();
-                switch (i) {
-                    case (1):
-                        label.setText(line.getId().toString());
-                        System.out.println(line.getId().toString());
-                        col ++;
-                        break;
-                    case (2):
-                        label.setText(line.getDate());
-                        System.out.println(line.getDate());
-                        col ++;
-                        break;
-                    case (3):
-                        if (line.getHeure() == null){
-                            label.setText("");
-                        }
-                        else {
-                            label.setText(line.getHeure());
-                            System.out.println(line.getId().toString());
-                        }
-                        col ++;
-                        break;
-                    case (4):
-                        label.setText(line.getNom());
-                        col ++;
-                        break;
-                    case (5):
-                        label.setText(line.getRegionEpicentrale());;
-                        col ++;
-                        break;
-                    case (6):
-                        if (line.getChoc() == null){
-                            label.setText("");
-                        }
-                        else label.setText(line.getChoc());
-                        col ++;
-                        break;
-                    case (7):
-                        if (line.getRgfX() == null){
-                            label.setText("");
-                        }
-                        else label.setText(line.getRgfX().toString());
-                        col ++;
-                        break;
-                    case (8):
-                        if (line.getRgfY() == null){
-                            label.setText("");
-                        }
-                        else label.setText(line.getRgfY().toString());
-                        col ++;
-                        break;
-                    case (9):
-                        if (line.getLongitudeWGS84() == null){
-                            label.setText("");
-                        }
-                        else label.setText(line.getLongitudeWGS84().toString());
-                        col ++;
-                        break;
-                    case (10):
-                        if (line.getLatitudeWGS84() == null){
-                            label.setText("");
-                        } else label.setText(line.getLatitudeWGS84().toString());
-                        col ++;
-                        break;
-                    case (11):
-                        label.setText(line.getIntEpicentrale().toString());
-                        col ++;
-                        break;
-                    case (12):
-                        label.setText(line.getQualIntEpicentrale());
-                        col ++;
-                        break;
-                    default:
-                        System.out.println("fail ");
-                }
-                tab.add(label, col, row);
-            }
-            ++row;
-            col = -1;
-        }
-
+        listeFiltre = new ArrayList<>();
+        constructGrid();
     }
 
     @FXML
@@ -319,5 +239,118 @@ public class SeismeController {
         mapView.setZoom(8);
         mapView.setCenter(latitude, longitude);
 
+        listeFiltre.add("region");
+        filtrer(listeFiltre);
+        constructGrid();
+    }
+
+    protected void filtrer (ArrayList<String> listeFiltree)
+    {
+        file.reinit();
+
+        ArrayList<SeismeCSVLine> toRemove = new ArrayList<>();
+
+        for (String filtre : listeFiltree)
+        {
+            switch (filtre)
+            {
+                case("region") :
+                    for (SeismeCSVLine line : file.getUsablelist())
+                    {
+                        if (line.getRegionEpicentrale() != dep.getValue())
+                            toRemove.add(line);
+                    }
+            }
+        }
+        file.removeLines(toRemove);
+    }
+
+    protected void constructGrid()
+    {
+        tab.getChildren().clear();
+        int row = 1;
+        int col = -1;
+        for (SeismeCSVLine line : file.getUsablelist()) {
+            for (int i = 1 ; i < 13 ; ++i) {
+                Label label = new Label();
+                switch (i) {
+                    case (1):
+                        label.setText(line.getId().toString());
+                        System.out.println(line.getId().toString());
+                        col ++;
+                        break;
+                    case (2):
+                        label.setText(line.getDate());
+                        System.out.println(line.getDate());
+                        col ++;
+                        break;
+                    case (3):
+                        if (line.getHeure() == null){
+                            label.setText("");
+                        }
+                        else {
+                            label.setText(line.getHeure());
+                            System.out.println(line.getId().toString());
+                        }
+                        col ++;
+                        break;
+                    case (4):
+                        label.setText(line.getNom());
+                        col ++;
+                        break;
+                    case (5):
+                        label.setText(line.getRegionEpicentrale());;
+                        col ++;
+                        break;
+                    case (6):
+                        if (line.getChoc() == null){
+                            label.setText("");
+                        }
+                        else label.setText(line.getChoc());
+                        col ++;
+                        break;
+                    case (7):
+                        if (line.getRgfX() == null){
+                            label.setText("");
+                        }
+                        else label.setText(line.getRgfX().toString());
+                        col ++;
+                        break;
+                    case (8):
+                        if (line.getRgfY() == null){
+                            label.setText("");
+                        }
+                        else label.setText(line.getRgfY().toString());
+                        col ++;
+                        break;
+                    case (9):
+                        if (line.getLongitudeWGS84() == null){
+                            label.setText("");
+                        }
+                        else label.setText(line.getLongitudeWGS84().toString());
+                        col ++;
+                        break;
+                    case (10):
+                        if (line.getLatitudeWGS84() == null){
+                            label.setText("");
+                        } else label.setText(line.getLatitudeWGS84().toString());
+                        col ++;
+                        break;
+                    case (11):
+                        label.setText(line.getIntEpicentrale().toString());
+                        col ++;
+                        break;
+                    case (12):
+                        label.setText(line.getQualIntEpicentrale());
+                        col ++;
+                        break;
+                    default:
+                        System.out.println("fail ");
+                }
+                tab.add(label, col, row);
+            }
+            ++row;
+            col = -1;
+        }
     }
 }

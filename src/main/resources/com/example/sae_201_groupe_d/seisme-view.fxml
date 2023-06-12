@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.gluonhq.maps.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae_201_groupe_d.SeismeController">
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae_201_groupe_d.SeismeController">
     <top>
         <HBox alignment="CENTER" style="-fx-background-color: #0f70ff;">
             <Label alignment="CENTER" style="-fx-font-size: 26px; -fx-font-family: Amiri; -fx-fill: white; " text="Séismes depuis 1000 ans" />
@@ -33,26 +34,46 @@
                 <TextField promptText="Intensité minimum" />
                 <TextField promptText="Intensité maximum" />
             </HBox>
-            <Pane prefHeight="400" prefWidth="400" style="-fx-background-color: #c0d6e1;" >
-                <MapView fx:id="mapView" prefHeight="400" prefWidth="400"/>
+            <Pane prefHeight="400" prefWidth="400" style="-fx-background-color: #c0d6e1;">
+                <MapView fx:id="mapView" prefHeight="400" prefWidth="400" />
             </Pane>
         </VBox>
     </left>
     <center>
         <ScrollPane>
-            <GridPane fx:id="tab" style="-fx-border-color: blue;-fx-border-width: 1px;-fx-border-radius: 5px;" >
-                <Label text="Identifiant" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                <Label text="Date (AAAA/MM/JJ)" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                <Label text="Heure" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-                <Label text="Nom" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
-                <Label text="Région Epicentrale" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
-                <Label text="Choc" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
-                <Label text="X" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
-                <Label text="Y" GridPane.columnIndex="7" GridPane.rowIndex="0"/>
-                <Label text="Latitude" GridPane.columnIndex="8" GridPane.rowIndex="0"/>
-                <Label text="Longitude" GridPane.columnIndex="9" GridPane.rowIndex="0"/>
-                <Label text="Intensité épicentrale" GridPane.columnIndex="10" GridPane.rowIndex="0"/>
-                <Label text="Qualité épicentrale" GridPane.columnIndex="11" GridPane.rowIndex="0"/>
+            <GridPane fx:id="tab" style="-fx-border-color: blue;-fx-border-width: 1px;-fx-border-radius: 5px;">
+                <Label text="Identifiant" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label text="Date (AAAA/MM/JJ)" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label text="Heure" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                <Label text="Nom" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                <Label text="Région Epicentrale" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                <Label text="Choc" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                <Label text="X" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                <Label text="Y" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                <Label text="Latitude" GridPane.columnIndex="8" GridPane.rowIndex="0" />
+                <Label text="Longitude" GridPane.columnIndex="9" GridPane.rowIndex="0" />
+                <Label text="Intensité épicentrale" GridPane.columnIndex="10" GridPane.rowIndex="0" />
+                <Label text="Qualité épicentrale" GridPane.columnIndex="11" GridPane.rowIndex="0" />
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+            </rowConstraints>
+            <opaqueInsets>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </opaqueInsets>
             </GridPane>
 
         </ScrollPane>
