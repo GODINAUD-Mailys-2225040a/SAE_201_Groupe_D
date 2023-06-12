@@ -36,7 +36,24 @@
         </VBox>
     </left>
     <center>
-        <GridPane fx:id="donnees" style="-fx-border-color: blue;-fx-border-width: 1px;-fx-border-radius: 5px;" />
+        <ScrollPane>
+            <GridPane fx:id="tab" style="-fx-border-color: blue;-fx-border-width: 1px;-fx-border-radius: 5px;" >
+                <Label text="Identifiant" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label text="Date (AAAA/MM/JJ)" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label text="Heure" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                <Label text="Nom" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+                <Label text="Région Epicentrale" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+                <Label text="Choc" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+                <Label text="X" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
+                <Label text="Y" GridPane.columnIndex="7" GridPane.rowIndex="0"/>
+                <Label text="Latitude" GridPane.columnIndex="8" GridPane.rowIndex="0"/>
+                <Label text="Longitude" GridPane.columnIndex="9" GridPane.rowIndex="0"/>
+                <Label text="Intensité épicentrale" GridPane.columnIndex="10" GridPane.rowIndex="0"/>
+                <Label text="Qualité épicentrale" GridPane.columnIndex="11" GridPane.rowIndex="0"/>
+            </GridPane>
+
+        </ScrollPane>
+
     </center>
     <right>
         <Pane prefHeight="400" prefWidth="500" style="-fx-background-color: #c0d6e1;">

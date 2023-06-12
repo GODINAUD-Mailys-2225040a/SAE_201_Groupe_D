@@ -5,17 +5,19 @@ import javafx.beans.property.SimpleMapProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.*;
 import com.gluonhq.maps.MapView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+
+import java.lang.reflect.Field;
 
 
 public class SeismeController {
 
     @FXML
-    private GridPane donnees;
+    private GridPane tab;
 
     @FXML
     private MapView mapView;
@@ -30,6 +32,7 @@ public class SeismeController {
     private TextField lon;
 
     private SeismeCSVReader file;
+
 
      ObservableList<String> options = FXCollections.observableArrayList(
              "CHARENTES",
@@ -80,11 +83,95 @@ public class SeismeController {
 
     @FXML
     protected void initialize(){
+        file = new SeismeCSVReader("src/main/resources/com/example/sae_201_groupe_d/SisFrance_seismes_20230605145730.csv");
         dep.setItems(options);
         mapView.setZoom(5.5);
         mapView.setCenter(46.603354, 1.888334);
 
-        file = new SeismeCSVReader("src/main/resources/com/example/sae_201_groupe_d/SisFrance_seismes_20230605145730.csv");
+        int row = 1;
+        int col = -1;
+        for (SeismeCSVLine line : file.getUsablelist()) {
+            for (int i = 1 ; i < 13 ; ++i) {
+                Label label = new Label();
+                switch (i) {
+                    case (1):
+                        label.setText(line.getId().toString());
+                        System.out.println(line.getId().toString());
+                        col ++;
+                        break;
+                    case (2):
+                        label.setText(line.getDate());
+                        System.out.println(line.getDate());
+                        col ++;
+                        break;
+                    case (3):
+                        if (line.getHeure() == null){
+                            label.setText("");
+                        }
+                        else {
+                            label.setText(line.getHeure());
+                            System.out.println(line.getId().toString());
+                        }
+                        col ++;
+                        break;
+                    case (4):
+                        label.setText(line.getNom());
+                        col ++;
+                        break;
+                    case (5):
+                        label.setText(line.getRegionEpicentrale());;
+                        col ++;
+                        break;
+                    case (6):
+                        if (line.getChoc() == null){
+                            label.setText("");
+                        }
+                        else label.setText(line.getChoc());
+                        col ++;
+                        break;
+                    case (7):
+                        if (line.getRgfX() == null){
+                            label.setText("");
+                        }
+                        else label.setText(line.getRgfX().toString());
+                        col ++;
+                        break;
+                    case (8):
+                        if (line.getRgfY() == null){
+                            label.setText("");
+                        }
+                        else label.setText(line.getRgfY().toString());
+                        col ++;
+                        break;
+                    case (9):
+                        if (line.getLongitudeWGS84() == null){
+                            label.setText("");
+                        }
+                        else label.setText(line.getLongitudeWGS84().toString());
+                        col ++;
+                        break;
+                    case (10):
+                        if (line.getLatitudeWGS84() == null){
+                            label.setText("");
+                        } else label.setText(line.getLatitudeWGS84().toString());
+                        col ++;
+                        break;
+                    case (11):
+                        label.setText(line.getIntEpicentrale().toString());
+                        col ++;
+                        break;
+                    case (12):
+                        label.setText(line.getQualIntEpicentrale());
+                        col ++;
+                        break;
+                    default:
+                        System.out.println("fail ");
+                }
+                tab.add(label, col, row);
+            }
+            ++row;
+            col = -1;
+        }
 
     }
 
@@ -93,6 +180,7 @@ public class SeismeController {
         mapView.setCenter(Double.parseDouble(lat.getText()), Double.parseDouble(lon.getText()));
         mapView.setZoom(8);
     }
+
 
     @FXML
     protected void recherchedep(){

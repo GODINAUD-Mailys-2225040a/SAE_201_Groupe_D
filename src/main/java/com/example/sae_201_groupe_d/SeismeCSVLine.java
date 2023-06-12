@@ -138,21 +138,15 @@ public class SeismeCSVLine
         return qualIntEpicentrale;
     }
 
-    @Override
-    public String toString() {
-        return "SeismeCSVLine[" +
-                "id=" + id +
-                ", date='" + date + '\'' +
-                ", heure=" + heure +
-                ", nom='" + nom + '\'' +
-                ", regionEpicentrale='" + regionEpicentrale + '\'' +
-                ", choc='" + choc + '\'' +
-                ", rgfX=" + rgfX +
-                ", rgfY=" + rgfY +
-                ", latitudeWGS84=" + latitudeWGS84 +
-                ", longitudeWGS84=" + longitudeWGS84 +
-                ", intEpicentrale=" + intEpicentrale +
-                ", qualIntEpicentrale='" + qualIntEpicentrale + '\'' +
-                ']';
+
+    public ArrayList<Field> getAllFields()
+    {
+        ArrayList<Field> privateFields = new ArrayList<>();
+        Field[] allFields = SeismeCSVLine.class.getDeclaredFields();
+        for (Field f : allFields)
+        {
+            privateFields.add(f);
+        }
+        return privateFields;
     }
 }
