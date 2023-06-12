@@ -66,6 +66,9 @@ public class SeismeController {
     @FXML
     private Pane contenu;
 
+    @FXML
+    private TextField rayon;
+
     private Node contenubase;
 
      ObservableList<String> options = FXCollections.observableArrayList(
@@ -123,6 +126,7 @@ public class SeismeController {
         dep.setItems(options);
         mapView.setZoom(5.5);
         mapView.setCenter(46.603354, 1.888334);
+        //isAsc = true;
 
         listeFiltre = new ArrayList<>();
         constructGrid();
@@ -130,6 +134,7 @@ public class SeismeController {
 
     @FXML
     private void stats(ActionEvent event){
+
         contenubase = contenu.getChildren().get(0);
         contenu.getChildren().clear();
 
@@ -209,7 +214,7 @@ public class SeismeController {
         } else if (depSelecte.equals("NORMANDIE")) {
             latitude = 49;
             longitude = -0.5;
-        } else if (depSelecte.equals("FRANCHE-COMPTE")) {
+        } else if (depSelecte.equals("FRANCHE-COMTE")) {
             latitude = 47;
             longitude = 6.3;
         } else if (depSelecte.equals("ANJOU")) {
@@ -363,6 +368,15 @@ public class SeismeController {
         constructGrid();
     }
 
+    @FXML
+    protected void filtrerAlentours ()
+    {
+
+        listeFiltre.add("alentours");
+        filtrer(listeFiltre);
+        constructGrid();
+    }
+
     protected void filtrer (ArrayList<String> listeFiltree)
     {
         file.reinit();
@@ -393,6 +407,24 @@ public class SeismeController {
                         if (line.getIntEpicentrale() < intBorneMin ||
                                 line.getIntEpicentrale() > intBorneMax)
                             toRemove.add(line);
+                    }
+                case("alentours") :
+                    for (SeismeCSVLine line : file.getUsablelist())
+                    {
+
+                        if (line.getLatitudeWGS84() == null || line.getLongitudeWGS84() == null)
+                        {
+                            toRemove.add(line);
+                        }
+                        else if (distance(Double.parseDouble(lat.getText()), Double.parseDouble(lat.getText()),
+                                line.getLatitudeWGS84(), line.getLongitudeWGS84()) > Double.parseDouble(rayon.getText()))
+                        {
+                            toRemove.add(line);
+                        }
+                        else {
+                            System.out.println(distance(Double.parseDouble(lat.getText()), Double.parseDouble(lat.getText()),
+                                    line.getLatitudeWGS84(), line.getLongitudeWGS84()));
+                        }
                     }
             }
         }
@@ -451,13 +483,13 @@ public class SeismeController {
                         col ++;
                         break;
                     case (9):
-                        if (line.getLongitudeWGS84() == null) {label.setText("");}
-                        else label.setText(line.getLongitudeWGS84().toString());
+                        if (line.getLatitudeWGS84() == null) {label.setText("");}
+                        else label.setText(line.getLatitudeWGS84().toString());
                         col ++;
                         break;
                     case (10):
-                        if (line.getLatitudeWGS84() == null) {label.setText("");}
-                        else label.setText(line.getLatitudeWGS84().toString());
+                        if (line.getLongitudeWGS84() == null) {label.setText("");}
+                        else label.setText(line.getLongitudeWGS84().toString());
                         col ++;
                         break;
                     case (11):
@@ -479,4 +511,37 @@ public class SeismeController {
             col = -1;
         }
     }
+
+
+    private double distanceKmLatLon (double lat2, double lon2, double lat1, double lon1)
+    {
+        //formule de Harvesine
+        final double R = 6371; //Rayon de la Terre
+
+        Double latDistance = degreEnRad(lat2-lat1);
+        Double lonDistance = degreEnRad(lon2-lon1);
+        Double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2) +
+                Math.cos(degreEnRad(lat1)) * Math.cos(degreEnRad(lat2)) *
+                        Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+        Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        Double distance = R * c;
+
+        return distance;
+    }
+    private double degreEnRad(double deg)
+    {
+        return deg * (Math.PI/180);
+    }
+
+    private double distance(double lat1, double lon1, double lat2, double lon2) {
+        double theta = lon1 - lon2;
+        double dist = Math.sin(degreEnRad(lat1)) * Math.sin(degreEnRad(lat2)) + Math.cos(degreEnRad(lat1)) *
+                Math.cos(degreEnRad(lat2)) * Math.cos(degreEnRad(theta));
+        dist = Math.acos(dist);
+        dist = degreEnRad(dist);
+        dist = dist * 60 * 1.1515;
+        dist = dist * 1.609344;
+        return (dist);
+    }
+
 }

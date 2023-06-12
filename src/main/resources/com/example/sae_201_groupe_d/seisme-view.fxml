@@ -26,7 +26,7 @@
                 <TextField fx:id="lat" onAction="#recherchecoordonnees" promptText="Latitude" />
                 <TextField fx:id="lon" onAction="#recherchecoordonnees" promptText="Longitude" />
             </HBox>
-            <TextField fx:id="rayon" promptText="Rayon en km"/>
+            <TextField fx:id="rayon" onAction="#filtrerAlentours" promptText="Rayon en km"/>
             <Separator />
             <Label style="-fx-font-size: 26px; -fx-text-fill: #0360a1;" text="Intensité" />
             <HBox>
