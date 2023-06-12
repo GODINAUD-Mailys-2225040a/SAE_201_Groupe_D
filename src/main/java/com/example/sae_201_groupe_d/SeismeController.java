@@ -37,6 +37,10 @@ public class SeismeController {
 
     private ArrayList<String> listeFiltre;
 
+    @FXML
+    private Label id, date, h, nom, RE, ch, X, Y, lati, longi, IE, QE;
+
+
 
      ObservableList<String> options = FXCollections.observableArrayList(
              "CHARENTES",
@@ -280,6 +284,7 @@ public class SeismeController {
     protected void constructGrid()
     {
         tab.getChildren().clear();
+        tab.getChildren().addAll(id, date, h, nom, RE, ch, X, Y, lati, longi, IE, QE);
         int row = 1;
         int col = -1;
         for (SeismeCSVLine line : file.getUsablelist()) {
