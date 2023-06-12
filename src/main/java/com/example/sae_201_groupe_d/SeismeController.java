@@ -11,8 +11,10 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import com.gluonhq.maps.MapView;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.lang.reflect.Field;
 import java.net.ServerSocket;
@@ -124,14 +126,18 @@ public class SeismeController {
 
     @FXML
     private void stats(ActionEvent event){
+
         contenubase = contenu.getChildren().get(0);
         contenu.getChildren().clear();
 
-        Pane newContent = new Pane();
-        Label text = new Label("test");
-        newContent.getChildren().add(text);
-        contenu.getChildren().add(newContent);
+        BorderPane newContent = new BorderPane();
 
+        Label text = new Label("Statistiques liées au tableau de données : ");
+        newContent.setTop(text);
+
+
+
+        contenu.getChildren().add(newContent);
     }
 
     @FXML
@@ -141,11 +147,8 @@ public class SeismeController {
     }
 
     @FXML
-    protected void marqueurs(){
-        for (int i = 1 ; i < tab.getRowCount() ; ++i){
-            for (int j = 0; j < tab.getColumnCount(); ++j){
-
-            }
+    protected void marqueurs(Stage stage){
+        for (int i = 1 ; i < tab. ; ++i){
 
         }
     }
