@@ -130,7 +130,6 @@ public class SeismeController {
 
     @FXML
     private void stats(ActionEvent event){
-
         contenubase = contenu.getChildren().get(0);
         contenu.getChildren().clear();
 
@@ -163,7 +162,7 @@ public class SeismeController {
             }
 
             Node node2 = getNodeByRowColumnIndex(i, 9, tab);
-            if (node instanceof TextField) {
+            if (node2 instanceof TextField) {
                 TextField textField = (TextField) node;
                 longitude = Double.parseDouble(textField.getText());
             }
@@ -396,8 +395,8 @@ public class SeismeController {
                             toRemove.add(line);
                     }
             }
-            marqueurs();
         }
+        marqueurs();
         file.removeLines(toRemove);
     }
 
