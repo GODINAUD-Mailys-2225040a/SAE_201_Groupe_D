@@ -67,21 +67,4 @@ public class SeismeCSVReader
     Getter
      */
     public ArrayList<SeismeCSVLine> getUsableList() {return usableList;}
-
-    /*
-    public void sortDate(boolean isAsc)
-    {
-        if (isAsc)
-        {
-            reinit();
-        }
-        else
-        {
-            Collections.reverse(usableList);
-        }
-    }
-
-     */
-
-
 }

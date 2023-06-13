@@ -63,6 +63,7 @@ public class SeismeController {
 
     private Node contenubase;
 
+
     //Liste des régions présentes dans le fichier csv
      ObservableList<String> options = FXCollections.observableArrayList(
              "CHARENTES",
@@ -125,6 +126,7 @@ public class SeismeController {
 
         listeFiltre = new ArrayList<>();
         constructGrid();
+        marqueurs();
     }
 
     @FXML
@@ -248,45 +250,28 @@ public class SeismeController {
     protected void marqueurs()
     {
         /*
-        --NON FONCTIONNELLE--
         Fonction utilisée à la fin d'une application
         de filtre et permet de placer un point sur la
         carte correspondant à chaques séismes présents
         dans la liste affichée courante.
+        Par faute de temps, nous n'avons pas réussi
+        à faire en sorte que les points affichés soit
+        ceux filtrés et affichés de l'attribut usableList
          */
-        double latitude = 0;
-        double longitude = 0;
-        for (int i = 1 ; i < tab.getRowCount() ; ++i){
-            Node node = getNodeByRowColumnIndex(i,8, tab);
-
-            if (node instanceof TextField) {
-                TextField textField1 = (TextField) node;
-                latitude = Double.parseDouble(textField1.getText());
+        for (SeismeCSVLine line : file.getUsableList())
+        {
+            if (line.getLatitudeWGS84() == null ||
+                line.getLongitudeWGS84()== null)
+            {
+                continue;
             }
-
-            Node node2 = getNodeByRowColumnIndex(i, 9, tab);
-            if (node2 instanceof TextField) {
-                TextField textField2 = (TextField) node;
-                longitude = Double.parseDouble(textField2.getText());
-            }
-            MapPoint marqueur = new MapPoint(latitude, longitude);
-            MapLayer newLayer = new CustomCircleMarkerLayer(marqueur);
-            mapView.addLayer(newLayer);
-        }
-    }
-    //Fonction utile à marqueurs() qui permettait une boucle dans le tableau
-    public Node getNodeByRowColumnIndex (final int row, final int column, GridPane tab) {
-        Node result = null;
-        ObservableList<Node> childrens = tab.getChildren();
-
-        for (Node node : childrens) {
-            if(tab.getRowIndex(node) == row && tab.getColumnIndex(node) == column) {
-                result = node;
-                break;
+            else
+            {
+                MapPoint point = new MapPoint(line.getLatitudeWGS84(), line.getLongitudeWGS84());
+                MapLayer mapLayer = new CustomCircleMarkerLayer(point);
+                mapView.addLayer(mapLayer);
             }
         }
-
-        return result;
     }
 
     @FXML
@@ -526,8 +511,6 @@ public class SeismeController {
         toRemove, stocke toutes les lignes à enlever en fonction
         des filtres appliqués, puis les enlève tous de l'attribut
         usableList de file.
-        La fonction fini par afficher la localisation des lignes
-        gardées sur la carte.
          */
         file.reinit();
         ArrayList<SeismeCSVLine> toRemove = new ArrayList<>();
@@ -595,7 +578,6 @@ public class SeismeController {
                     }
             }
         }
-        //marqueurs();
         file.removeLines(toRemove);
     }
 
@@ -625,6 +607,8 @@ public class SeismeController {
         des séismes dans l'application. Elle parcourt l'attribut
         usableList de la variable file et place les bons attributs
         dans les bonnes colonnes.
+        La fonction fini par afficher la localisation des lignes
+        gardées sur la carte.
          */
         tab.getChildren().clear();
         tab.getChildren().addAll(id, date, h, nom, RE, ch, X, Y, lati, longi, IE, QE);
