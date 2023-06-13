@@ -6,6 +6,13 @@ import java.util.Scanner;
 
 public class SeismeCSVLine
 {
+    /*
+    Classe permettant de stocker une ligne du fichier CSV pris en compte dans ce
+    projet.
+    Ses attributs correspondent au différentes données indiquées par le fichier
+    utilisé et exploité.
+     */
+
     private Integer id;
     private String date;
     private String heure;
@@ -25,6 +32,10 @@ public class SeismeCSVLine
     }
 
     public void getRecordFromLine(String line) {
+        /*
+        Fonction permettant de lire une ligne du fichier CSV et
+        attribuer en conséquence les bonnes valeurs aux bons attributs.
+         */
 
         ArrayList<Field> privateFields = new ArrayList<>();
         Field[] allFields = SeismeCSVLine.class.getDeclaredFields();
@@ -90,54 +101,33 @@ public class SeismeCSVLine
         }
     }
 
-    public Integer getId() {
-        return id;
-    }
+    /*
+    Getters, Setters et toString
+     */
 
-    public String getDate() {
-        return date;
-    }
+    public Integer getId() {return id;}
 
-    public String getHeure() {
-        return heure;
-    }
+    public String getDate() {return date;}
 
-    public String getNom() {
-        return nom;
-    }
+    public String getHeure() {return heure;}
 
-    public String getRegionEpicentrale() {
-        return regionEpicentrale;
-    }
+    public String getNom() {return nom;}
 
-    public String getChoc() {
-        return choc;
-    }
+    public String getRegionEpicentrale() {return regionEpicentrale;}
 
-    public Double getRgfX() {
-        return rgfX;
-    }
+    public String getChoc() {return choc;}
 
-    public Double getRgfY() {
-        return rgfY;
-    }
+    public Double getRgfX() {return rgfX;}
 
-    public Double getLatitudeWGS84() {
-        return latitudeWGS84;
-    }
+    public Double getRgfY() {return rgfY;}
 
-    public Double getLongitudeWGS84() {
-        return longitudeWGS84;
-    }
+    public Double getLatitudeWGS84() {return latitudeWGS84;}
 
-    public Double getIntEpicentrale() {
-        return intEpicentrale;
-    }
+    public Double getLongitudeWGS84() {return longitudeWGS84;}
 
-    public String getQualIntEpicentrale() {
-        return qualIntEpicentrale;
-    }
+    public Double getIntEpicentrale() {return intEpicentrale;}
 
+    public String getQualIntEpicentrale() {return qualIntEpicentrale;}
 
     @Override
     public String toString() {
