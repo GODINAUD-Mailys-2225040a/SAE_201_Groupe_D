@@ -27,6 +27,8 @@ import javafx.scene.shape.Circle;
 import java.lang.reflect.Field;
 import java.net.ServerSocket;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 
 public class SeismeController {
@@ -129,14 +131,13 @@ public class SeismeController {
         dep.setItems(options);
         mapView.setZoom(5.5);
         mapView.setCenter(46.603354, 1.888334);
-        //isAsc = true;
 
         listeFiltre = new ArrayList<>();
         constructGrid();
     }
 
     @FXML
-    private void stats(ActionEvent event){
+    private void stats(){
 
         contenubase = contenu.getChildren().get(0);
         contenu.getChildren().clear();
@@ -148,23 +149,49 @@ public class SeismeController {
         Label text = new Label("Statistiques liées au tableau de données : ");
         newContent.setTop(text);
 
-        NumberAxis x = new NumberAxis();
+        ArrayList<String> listeAnnees = new ArrayList<>();
+        for (int i=1100 ; i < 2100 ; i += 100)
+        {
+            listeAnnees.add(String.valueOf(i));
+        }
+
+        int cpt = 0;
+        ArrayList<Integer> listeNbSeismeParAn = new ArrayList<>(Collections.nCopies(10, 0));
+        for (SeismeCSVLine line : file.getUsablelist())
+        {
+            for (int i=1100 ; i < 2100 ; i += 100)
+            {
+                if (Integer.parseInt(line.getDate().substring(0,4)) > i)
+                {
+                    ++cpt;
+                }
+                else
+                {
+                    listeNbSeismeParAn.set(cpt, listeNbSeismeParAn.get(cpt) + 1);
+                    break;
+                }
+            }
+            cpt = 0;
+        }
+
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Évolution du nombre d'enregistrements");
+        for (int i=0 ; i < listeAnnees.size() ; ++i)
+        {
+            series.getData().add(new XYChart.Data(listeAnnees.get(i) , listeNbSeismeParAn.get(i)));
+        }
+
+        ObservableList<String> oListeAnnees = FXCollections.observableArrayList(listeAnnees);
+
+        CategoryAxis x = new CategoryAxis(oListeAnnees);
         NumberAxis y = new NumberAxis();
 
-        LineChart<Number, Number> lineChart = new LineChart<>(x, y);
-        lineChart.setTitle("Evolution du nombre de séismes en fonction du temps");
+        x.setLabel("Années");
+        y.setLabel("Nombre de séismes");
 
-
-        int rowCount = tab.getRowCount() ;
-        for (int rowIndex = 0; rowIndex < rowCount; rowIndex++){
-            String valeurString = ((GridPane) tab.getChildren().get(rowIndex)).getChildren().get(0).toString();
-            int valeur = Integer.parseInt(valeurString);
-
-            XYChart.Series<Number, Number> series = new XYChart.Series<>();
-            series.getData().add(new XYChart.Data<>(rowIndex + 1, valeur));
-
-            lineChart.getData().add(series);
-        }
+        LineChart<String, Number> lineChart = new LineChart<>(x, y);
+        lineChart.setTitle("Evolution du nombre de séismes enregistrés dans le temps");
+        lineChart.getData().add(series);
 
         stats.add(lineChart, 0,0);
 
