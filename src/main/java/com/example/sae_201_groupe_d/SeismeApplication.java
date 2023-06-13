@@ -15,7 +15,7 @@ public class SeismeApplication extends Application {
         System.setProperty("javafx.platform", "desktop");
         System.setProperty("http.agent", "Gluon Mobile/1.0.3");
         FXMLLoader fxmlLoader = new FXMLLoader(SeismeApplication.class.getResource("seisme-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1800, 1000);
+        Scene scene = new Scene(fxmlLoader.load(), 1510, 800);
         String cheminlogo = "logo.png";
         Image logo = new Image(getClass().getResourceAsStream(cheminlogo));
         stage.setTitle("SysmoFR");
