@@ -192,7 +192,8 @@ public class SeismeController {
         lineChart.setTitle("Evolution du nombre de séismes enregistrés dans le temps");
         lineChart.getData().add(series);
 
-        //PieChart montrant le nombre de séismes par intensité (de 1 à 10 et intensité arrondie à l'inferieur)
+
+        //PieChart montrant le nombre de séismes par intensité (de 1 à 10)
 
         ArrayList<String> intensites = new ArrayList<>();
         ArrayList<Integer> nbSeismesInt = new ArrayList<>(Collections.nCopies(10, 0));
@@ -204,9 +205,11 @@ public class SeismeController {
         {
             for (int i = 0 ; i < 10 ; ++i)
             {
-                if (line.getIntEpicentrale() < i)
+                if (line.getIntEpicentrale() > i){}
+                else
                 {
                     nbSeismesInt.set(i, nbSeismesInt.get(i) + 1);
+                    break;
                 }
             }
         }
