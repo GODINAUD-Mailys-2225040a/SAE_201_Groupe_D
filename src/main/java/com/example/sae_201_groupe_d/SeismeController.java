@@ -16,6 +16,9 @@ import javafx.scene.layout.Pane;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Contrôleur de la vue Seisme.fxml
+ */
 
 public class SeismeController {
 
@@ -64,8 +67,10 @@ public class SeismeController {
     private Node contenubase;
 
 
-    //Liste des régions présentes dans le fichier csv
-     ObservableList<String> options = FXCollections.observableArrayList(
+    /**
+     * Liste des régions présentes dans le fichier CSV
+     */
+    ObservableList<String> options = FXCollections.observableArrayList(
              "CHARENTES",
              "NIVERNAIS",
              "POITOU",
@@ -111,7 +116,9 @@ public class SeismeController {
              "ARDENNE"
     );
 
-
+    /**
+     * Méthode d'initialisation de l'application à son lancement
+     */
     @FXML
     protected void initialize()
     {
@@ -128,15 +135,12 @@ public class SeismeController {
         constructGrid();
         marqueurs();
     }
-
+    /**
+     * Méthode correspondante au bouton permettant d'afficher différentes statistiques par rapport aux séismes sélectionnés par des filtres
+     */
     @FXML
     private void stats()
     {
-        /*
-        Fonction correspondante au bouton permettant
-        d'afficher différentes statistiques par rapport
-        aux séismes séléctionnés par des filtres.
-         */
         contenubase = contenu.getChildren().get(0);
         contenu.getChildren().clear();
 
@@ -148,7 +152,7 @@ public class SeismeController {
         newContent.setTop(text);
 
 
-        //LineChart montrant le nombre de séismes enregistrés par tranche de 100 ans
+        // LineChart montrant le nombre de séismes enregistrés par tranche de 100 ans
 
         ArrayList<String> listeAnnees = new ArrayList<>();
         for (int i=1100 ; i < 2100 ; i += 100)
@@ -226,6 +230,7 @@ public class SeismeController {
         PieChart pieChart = new PieChart(oPieChartData);
         pieChart.setTitle("Répartition des séismes en fonction de leur intensité");
 
+        // Ajout des graphiques à la vue
         stats.add(lineChart, 0,0);
         stats.add(pieChart, 1, 0);
 
@@ -237,11 +242,11 @@ public class SeismeController {
     @FXML
     private void donnees()
     {
-        /*
+        /**
         Fonction correspondant au bouton
         permettant d'afficher les données des
         séismes voulus.
-         */
+         **/
         contenu.getChildren().clear();
         contenu.getChildren().add(contenubase);
     }
@@ -249,7 +254,7 @@ public class SeismeController {
     @FXML
     protected void marqueurs()
     {
-        /*
+        /**
         Fonction utilisée à la fin d'une application
         de filtre et permet de placer un point sur la
         carte correspondant à chaques séismes présents
@@ -257,7 +262,7 @@ public class SeismeController {
         Par faute de temps, nous n'avons pas réussi
         à faire en sorte que les points affichés soit
         ceux filtrés et affichés de l'attribut usableList
-         */
+         **/
         for (SeismeCSVLine line : file.getUsableList())
         {
             if (line.getLatitudeWGS84() == null ||
@@ -277,11 +282,11 @@ public class SeismeController {
     @FXML
     protected void recherchecoordonnees()
     {
-        /*
+        /**
         Fonction permettant de centrer la carte
         sur un point spécifié par ses coordonnées
         latitudinales ainsi que longitudinales.
-         */
+         **/
         mapView.setCenter(Double.parseDouble(lat.getText()), Double.parseDouble(lon.getText()));
         mapView.setZoom(8);
     }
@@ -289,12 +294,12 @@ public class SeismeController {
     @FXML
     protected void recherchereg()
     {
-        /*
+        /**
         Fonction permettant d'appliquer un filtre
         de région par rapport a la région
         séléctionnée. La carte sera mise au dessus
         de la région en question à l'aide de ses coordonnées.
-         */
+         **/
         String regSelecte = reg.getValue();
         double latitude = 0;
         double longitude = 0;
@@ -439,14 +444,14 @@ public class SeismeController {
     @FXML
     protected void filtrerDate ()
     {
-        /*
+        /**
         Fonction appliquant un filtre par rapport
         à la date des séismes étudiés.
         Si les zones de texte sont vides, une valeur
         par défaut est utilisée pour encadrer du mieux
         possible les dates voulues.
         Fonctionnement similaire au filtre d'intensité.
-         */
+        * */
         if (dateBorneSup.getText().isEmpty()) {dateBorneMax = 2222;}
         else {dateBorneMax = Integer.parseInt(dateBorneSup.getText());}
 
@@ -461,14 +466,14 @@ public class SeismeController {
     @FXML
     protected void filtrerIntensite ()
     {
-        /*
+        /**
         Fonction appliquant un filtre par rapport
         à l'intensité des séismes.
         Si les zones de texte sont vides, une valeur
         par défaut est utilisée pour encadrer du mieux
         possible les intensités voulues.
         Fonctionnement similaire au filtre de date.
-         */
+         **/
         if (intBorneSup.getText().isEmpty()) {intBorneMax = 10.0;}
         else {intBorneMax = Double.parseDouble(intBorneSup.getText());}
 
@@ -483,12 +488,12 @@ public class SeismeController {
     @FXML
     protected void filtrerAlentours ()
     {
-        /*
+        /**
         Fonction appliquant un filtre pour trouver
         tout les séismes dans un rayon donné en km
         autour d'un point spécifié avec les latitudes
         et longitudes.
-         */
+         **/
 
         listeFiltre.add("alentours");
         filtrer(listeFiltre);
@@ -497,7 +502,7 @@ public class SeismeController {
 
     protected void filtrer (ArrayList<String> listeFiltre)
     {
-        /*
+        /**
         Fonction de filtre utilisée par toutes les autres
         fonction appliquant des filtres.
         Réinitialise l'attribut usableList de file pour repartir
@@ -511,7 +516,7 @@ public class SeismeController {
         toRemove, stocke toutes les lignes à enlever en fonction
         des filtres appliqués, puis les enlève tous de l'attribut
         usableList de file.
-         */
+         **/
         file.reinit();
         ArrayList<SeismeCSVLine> toRemove = new ArrayList<>();
 
@@ -522,12 +527,12 @@ public class SeismeController {
                 case("region") :
                     for (SeismeCSVLine line : file.getUsableList())
                     {
-                        /*
+                        /**
                         En cas de filtre par région, si la région de
                         la ligne courante n'est pas la même que celle
                         appliquée par le filtre, elle sera supprimée de
                         la liste.
-                         */
+                         **/
                         if (!(line.getRegionEpicentrale().equals(reg.getValue())))
                             toRemove.add(line);
                     }
@@ -535,11 +540,11 @@ public class SeismeController {
                 case("date") :
                     for (SeismeCSVLine line : file.getUsableList())
                     {
-                        /*
+                        /**
                         En cas de filtre par date, si la date de la ligne
                         courrante n'est pas comprise entre les deux bornes
                         correspondantes, elle sera supprimée de la liste.
-                         */
+                         **/
                         if (Integer.parseInt(line.getDate().substring(0, 4)) < dateBorneMin ||
                                 Integer.parseInt(line.getDate().substring(0, 4)) > dateBorneMax)
                             toRemove.add(line);
@@ -548,12 +553,12 @@ public class SeismeController {
                 case("intensite") :
                     for (SeismeCSVLine line : file.getUsableList())
                     {
-                        /*
+                        /**
                         En cas de filtre par intensité, si l'intensité
                         de la ligne courrante n'est pas comprise entre
                         les deux bornes correspondantes, elle sera supprimée
                         de la liste.
-                         */
+                         **/
                         if (line.getIntEpicentrale() < intBorneMin ||
                                 line.getIntEpicentrale() > intBorneMax)
                             toRemove.add(line);
@@ -561,14 +566,14 @@ public class SeismeController {
                 case("alentours") :
                     for (SeismeCSVLine line : file.getUsableList())
                     {
-                        /*
+                        /**
                         En cas de filtre par alentours, si une des coordonnées
                         de la ligne courante est nulle ou bien la distance en
                         km entre le point central saisi dans le filtre et les
                         coordonnées de la ligne courante est plus grande que
                         le rayon en km appliqué par le filtre d'alentours, la
                         ligne sera supprimée.
-                         */
+                         **/
                         if (line.getLatitudeWGS84() == null || line.getLongitudeWGS84() == null ||
                                 calculateDistance(Double.parseDouble(lat.getText()), Double.parseDouble(lon.getText()),
                                         line.getLatitudeWGS84(), line.getLongitudeWGS84()) > Double.parseDouble(rayon.getText()))
@@ -584,14 +589,14 @@ public class SeismeController {
     @FXML
     protected void removeFilters()
     {
-        /*
+        /**
         Fonction utilisée par le bouton permettant d'enlever
         la totalité des filtres.
         Vide la liste de filtre à appliquer, pour filtrer
         l'attribut usableListe de file à partir de rien,
         aucune modification ne sera donc apportée à la
         liste des séismes. Elle recentre ensuite la carte.
-         */
+         **/
         listeFiltre.clear();
         filtrer(listeFiltre);
         constructGrid();
@@ -601,7 +606,7 @@ public class SeismeController {
 
     protected void constructGrid()
     {
-        /*
+        /**
         Fonction utilisée dans tout type d'affinage de recherche.
         Permet de reconstruire le tableau d'affichage des données
         des séismes dans l'application. Elle parcourt l'attribut
@@ -609,7 +614,7 @@ public class SeismeController {
         dans les bonnes colonnes.
         La fonction fini par afficher la localisation des lignes
         gardées sur la carte.
-         */
+         **/
         tab.getChildren().clear();
         tab.getChildren().addAll(id, date, h, nom, RE, ch, X, Y, lati, longi, IE, QE);
         int row = 1;
@@ -691,11 +696,11 @@ public class SeismeController {
 
     public static double calculateDistance(double lat1, double lon1, double lat2, double lon2)
     {
-        /*
+        /**
         Fonction utilisée lors du filtre d'alentours.
         La formule utilisée est la formule Harvesine et permet de calculer
         la distance entre deux points donnés en latitude et longitude WGS84.
-         */
+         **/
         final double R = 6371;
 
         double dLat = Math.toRadians(lat2 - lat1);

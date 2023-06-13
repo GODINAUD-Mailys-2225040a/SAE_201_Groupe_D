@@ -4,15 +4,11 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class SeismeCSVLine
-{
-    /*
-    Classe permettant de stocker une ligne du fichier CSV pris en compte dans ce
-    projet.
-    Ses attributs correspondent au différentes données indiquées par le fichier
-    utilisé et exploité.
-     */
-
+/**
+ * Classe permettant de stocker une ligne du fichier CSV pris en compte dans ce projet.
+ * Ses attributs correspondent aux différentes données indiquées par le fichier utilisé et exploité.
+ */
+public class SeismeCSVLine {
     private Integer id;
     private String date;
     private String heure;
@@ -26,17 +22,16 @@ public class SeismeCSVLine
     private Double intEpicentrale;
     private String qualIntEpicentrale;
 
-    public SeismeCSVLine()
-    {
+    public SeismeCSVLine() {
         super();
     }
 
+    /**
+     * Fonction permettant de lire une ligne du fichier CSV et attribuer en conséquence les bonnes valeurs aux bons attributs.
+     *
+     * @param line La ligne du fichier CSV à lire.
+     */
     public void getRecordFromLine(String line) {
-        /*
-        Fonction permettant de lire une ligne du fichier CSV et
-        attribuer en conséquence les bonnes valeurs aux bons attributs.
-         */
-
         ArrayList<Field> privateFields = new ArrayList<>();
         Field[] allFields = SeismeCSVLine.class.getDeclaredFields();
         for (Field field : allFields) {
@@ -52,10 +47,8 @@ public class SeismeCSVLine
                 String current = new String(rowScanner.next());
                 if (current.isEmpty()) {
                     privateFields.set(cpt, null);
-                }
-                else {
-                    switch (cpt)
-                    {
+                } else {
+                    switch (cpt) {
                         case (1):
                             this.id = (Integer.parseInt(current));
                             break;
@@ -80,16 +73,16 @@ public class SeismeCSVLine
                         case (8):
                             this.rgfY = (Double.parseDouble(current));
                             break;
-                        case(9):
+                        case (9):
                             this.latitudeWGS84 = (Double.parseDouble(current));
                             break;
-                        case(10):
+                        case (10):
                             this.longitudeWGS84 = (Double.parseDouble(current));
                             break;
-                        case(11):
+                        case (11):
                             this.intEpicentrale = (Double.parseDouble(current));
                             break;
-                        case(12):
+                        case (12):
                             this.qualIntEpicentrale = (current);
                             cpt = 0;
                             break;
@@ -101,33 +94,113 @@ public class SeismeCSVLine
         }
     }
 
-    /*
-    Getters, Setters et toString
+    /**
+     * Getter for the id attribute.
+     *
+     * @return The value of the id attribute.
      */
+    public Integer getId() {
+        return id;
+    }
 
-    public Integer getId() {return id;}
+    /**
+     * Getter for the date attribute.
+     *
+     * @return The value of the date attribute.
+     */
+    public String getDate() {
+        return date;
+    }
 
-    public String getDate() {return date;}
+    /**
+     * Getter for the heure attribute.
+     *
+     * @return The value of the heure attribute.
+     */
+    public String getHeure() {
+        return heure;
+    }
 
-    public String getHeure() {return heure;}
+    /**
+     * Getter for the nom attribute.
+     *
+     * @return The value of the nom attribute.
+     */
+    public String getNom() {
+        return nom;
+    }
 
-    public String getNom() {return nom;}
+    /**
+     * Getter for the regionEpicentrale attribute.
+     *
+     * @return The value of the regionEpicentrale attribute.
+     */
+    public String getRegionEpicentrale() {
+        return regionEpicentrale;
+    }
 
-    public String getRegionEpicentrale() {return regionEpicentrale;}
+    /**
+     * Getter for the choc attribute.
+     *
+     * @return The value of the choc attribute.
+     */
+    public String getChoc() {
+        return choc;
+    }
 
-    public String getChoc() {return choc;}
+    /**
+     * Getter for the rgfX attribute.
+     *
+     * @return The value of the rgfX attribute.
+     */
+    public Double getRgfX() {
+        return rgfX;
+    }
 
-    public Double getRgfX() {return rgfX;}
+    /**
+     * Getter for the rgfY attribute.
+     *
+     * @return The value of the rgfY attribute.
+     */
+    public Double getRgfY() {
+        return rgfY;
+    }
 
-    public Double getRgfY() {return rgfY;}
+    /**
+     * Getter for the latitudeWGS84 attribute.
+     *
+     * @return The value of the latitudeWGS84 attribute.
+     */
+    public Double getLatitudeWGS84() {
+        return latitudeWGS84;
+    }
 
-    public Double getLatitudeWGS84() {return latitudeWGS84;}
+    /**
+     * Getter for the longitudeWGS84 attribute.
+     *
+     * @return The value of the longitudeWGS84 attribute.
+     */
+    public Double getLongitudeWGS84() {
+        return longitudeWGS84;
+    }
 
-    public Double getLongitudeWGS84() {return longitudeWGS84;}
+    /**
+     * Getter for the intEpicentrale attribute.
+     *
+     * @return The value of the intEpicentrale attribute.
+     */
+    public Double getIntEpicentrale() {
+        return intEpicentrale;
+    }
 
-    public Double getIntEpicentrale() {return intEpicentrale;}
-
-    public String getQualIntEpicentrale() {return qualIntEpicentrale;}
+    /**
+     * Getter for the qualIntEpicentrale attribute.
+     *
+     * @return The value of the qualIntEpicentrale attribute.
+     */
+    public String getQualIntEpicentrale() {
+        return qualIntEpicentrale;
+    }
 
     @Override
     public String toString() {
