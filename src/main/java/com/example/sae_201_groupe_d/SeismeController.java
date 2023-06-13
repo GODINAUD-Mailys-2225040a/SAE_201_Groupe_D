@@ -192,7 +192,6 @@ public class SeismeController {
         lineChart.setTitle("Evolution du nombre de séismes enregistrés dans le temps");
         lineChart.getData().add(series);
 
-
         //PieChart montrant le nombre de séismes par intensité (de 1 à 10 et intensité arrondie à l'inferieur)
 
         ArrayList<String> intensites = new ArrayList<>();
