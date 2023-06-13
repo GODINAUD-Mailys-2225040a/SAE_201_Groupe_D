@@ -6,10 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import com.gluonhq.maps.MapView;
 import javafx.scene.layout.BorderPane;
@@ -147,6 +144,9 @@ public class SeismeController {
         Label text = new Label("Statistiques liées au tableau de données : ");
         newContent.setTop(text);
 
+
+        //LineChart montrant le nombre de séismes enregistrés par tranche de 100 ans
+
         ArrayList<String> listeAnnees = new ArrayList<>();
         for (int i=1100 ; i < 2100 ; i += 100)
         {
@@ -191,7 +191,38 @@ public class SeismeController {
         lineChart.setTitle("Evolution du nombre de séismes enregistrés dans le temps");
         lineChart.getData().add(series);
 
+
+        //PieChart montrant le nombre de séismes par intensité (de 1 à 10 et intensité arrondie à l'inferieur)
+
+        ArrayList<String> intensites = new ArrayList<>();
+        ArrayList<Integer> nbSeismesInt = new ArrayList<>(Collections.nCopies(10, 0));
+        for (int i = 1 ; i <= 10 ; ++i)
+        {
+            intensites.add(String.valueOf(i));
+        }
+        for (SeismeCSVLine line : file.getUsableList())
+        {
+            for (int i = 0 ; i < 10 ; ++i)
+            {
+                if (line.getIntEpicentrale() < i)
+                {
+                    nbSeismesInt.set(i, nbSeismesInt.get(i) + 1);
+                }
+            }
+        }
+
+        ArrayList<PieChart.Data> pieChartData = new ArrayList<>();
+        for (int i = 0 ; i < intensites.size() ; ++i)
+        {
+            pieChartData.add(new PieChart.Data(intensites.get(i), nbSeismesInt.get(i)));
+        }
+
+        ObservableList<PieChart.Data> oPieChartData = FXCollections.observableArrayList(pieChartData);
+        PieChart pieChart = new PieChart(oPieChartData);
+        pieChart.setTitle("Répartition des séismes en fonction de leur intensité");
+
         stats.add(lineChart, 0,0);
+        stats.add(pieChart, 1, 0);
 
         newContent.setCenter(stats);
 
