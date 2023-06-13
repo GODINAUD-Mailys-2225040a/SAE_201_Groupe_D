@@ -66,6 +66,7 @@ public class SeismeController {
 
     private Node contenubase;
 
+    //Liste des régions présentes dans le fichier csv
      ObservableList<String> options = FXCollections.observableArrayList(
              "CHARENTES",
              "NIVERNAIS",
@@ -240,7 +241,7 @@ public class SeismeController {
             mapView.addLayer(newLayer);
         }
     }
-
+    //Fonction utile à marqueurs() qui permettait une boucle dans le tableau
     public Node getNodeByRowColumnIndex (final int row, final int column, GridPane tab) {
         Node result = null;
         ObservableList<Node> childrens = tab.getChildren();
