@@ -15,9 +15,38 @@ import java.lang.reflect.Field;
 
 public class SeismeController {
     @FXML
-    private void removeFilters(ActionEvent event) {
-
+    private TextField dateBorneInf;
+    @FXML
+    private TextField dateBorneSup;
+    @FXML
+    private TextField rayon;
+    @FXML
+    private TextField intBorneInf;
+    @FXML
+    private TextField intBorneSup;
+    @FXML
+    private void updateSeismeList() {
     }
+
+
+
+
+
+    @FXML
+    private void removeFilters() {
+
+        dateBorneInf.setText("");
+        dateBorneSup.setText("");
+        dep.getSelectionModel().clearSelection();
+        lat.setText("");
+        lon.setText("");
+        rayon.setText("");
+        intBorneInf.setText("");
+        intBorneSup.setText("");
+
+        updateSeismeList();
+    }
+
 
     @FXML
     private void stats(ActionEvent event) {

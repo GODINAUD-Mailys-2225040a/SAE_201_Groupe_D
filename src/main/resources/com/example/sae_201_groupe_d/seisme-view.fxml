@@ -2,6 +2,7 @@
 <?import com.gluonhq.maps.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
 <BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae_201_groupe_d.SeismeController">
     <top>
         <HBox alignment="CENTER" style="-fx-background-color: #0f70ff;">
@@ -65,4 +66,5 @@
             </ScrollPane>
         </VBox>
     </center>
+
 </BorderPane>
